@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<title>NL · Plan Anual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0a;
+  --bg2: #0d0d0d;
+  --bg3: #151515;
+  --bg4: #2a2a2a;
+  --border: rgba(200,169,110,0.12);
+  --text: #f5f0e8;
+  --muted: #888;
+  --muted2: #555;
+  --phase: #c8a96e;
+  --phase-dim: rgba(200,169,110,0.08);
+  --red: #c23b2a;
+  --radius: 4px;
+  --radius-sm: 2px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+
+/* ── LAYOUT ──────────────────────────── */
+#app { max-width: 500px; margin: 0 auto; min-height: 100vh; position: relative; }
+
+/* ── TOP BAR ────────────────────────── */
+.topbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,0.95); backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px 0;
+}
+.topbar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.2em; color: var(--phase); }
+.logo span { color: var(--text); font-size: 22px; }
+.topbar-right { margin-left: auto; text-align: right; }
+.topbar-date { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+.progress-wrap { display: flex; align-items: center; gap: 8px; }
+.progress-bar { flex: 1; height: 3px; background: var(--bg4); border-radius: 2px; overflow: hidden; }
+.progress-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--phase), #e8c98e); transition: width 0.4s ease; }
+.progress-pct { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: var(--phase); width: 34px; text-align: right; }
+
+/* ── PHASE TABS ─────────────────────── */
+.phase-scroll { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 12px; padding-left: 2px; scrollbar-width: none; }
+.phase-scroll::-webkit-scrollbar { display: none; }
+.phase-chip {
+  flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center;
+  background: transparent; border: 1px solid var(--bg4);
+  border-radius: var(--radius); padding: 7px 12px 6px;
+  cursor: pointer; transition: all 0.2s ease;
+  min-width: 72px;
+}
+.phase-chip:hover { border-color: var(--phase); }
+.phase-chip.active { border-color: var(--phase); background: var(--phase-dim); }
+.phase-chip-num { font-family: 'Bebas Neue', sans-serif; font-size: 20px; line-height: 1; }
+.phase-chip-label { font-family: 'Space Mono', monospace; font-size: 8px; font-weight: 400; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 2px; }
+.phase-chip.active .phase-chip-label { color: var(--phase); }
+
+/* ── PHASE HEADER ───────────────────── */
+.phase-header { padding: 16px 16px 0; }
+.phase-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px; line-height: 1; text-transform: uppercase; letter-spacing: 0.05em;
+  color: var(--phase);
+}
+.phase-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.meta-pill {
+  display: flex; align-items: center; gap: 5px;
+  background: transparent; border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 4px 10px;
+  font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em;
+}
+.meta-pill strong { color: var(--text); }
+.phase-obj { margin-top: 10px; font-size: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
+.phase-special-note {
+  margin: 10px 0 0;
+  background: var(--phase-dim); border: 1px solid var(--phase); border-left: 3px solid var(--phase);
+  border-radius: var(--radius-sm); padding: 10px 12px;
+  font-size: 12px; color: var(--text); line-height: 1.5;
+}
+.phase-special-note::before { content: "⚡ "; }
+
+/* ── CARDIO BLOCK (phase header) ─────── */
+.cardio-summary {
+  margin: 12px 16px 0;
+  background: rgba(109,197,109,0.04);
+  border: 1px solid rgba(109,197,109,0.15); border-left: 3px solid #6dc56d;
+  border-radius: var(--radius); padding: 12px 14px;
+  display: flex; gap: 12px; align-items: center;
+}
+.cardio-icon { font-size: 22px; }
+.cardio-info { flex: 1; }
+.cardio-title { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.05em; color: #6dc56d; text-transform: uppercase; }
+.cardio-detail { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 2px; line-height: 1.6; letter-spacing: 0.05em; }
+
+/* ── DAY TABS ───────────────────────── */
+.day-tabs-wrap { padding: 14px 16px 0; }
+.day-scroll { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.day-scroll::-webkit-scrollbar { display: none; }
+.day-tab {
+  flex-shrink: 0; display: flex; flex-direction: column; align-items: center;
+  background: transparent; border: 1px solid var(--bg4);
+  border-radius: var(--radius); padding: 6px 10px;
+  cursor: pointer; transition: all 0.2s ease;
+  min-width: 60px; position: relative;
+}
+.day-tab:hover { border-color: var(--phase); }
+.day-tab.active { border-color: var(--phase); background: var(--phase-dim); }
+.day-tab.cardio-day { border-color: rgba(109,197,109,0.2); }
+.day-tab.cardio-day.active { border-color: #6dc56d; background: rgba(109,197,109,0.06); }
+.day-tab-name { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.05em; }
+.day-tab-focus { font-family: 'Space Mono', monospace; font-size: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 56px; }
+.day-tab.active .day-tab-focus { color: var(--phase); }
+.day-tab.completed-day::after {
+  content: "✓"; position: absolute; top: -5px; right: -5px;
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #6dc56d; color: var(--bg);
+  font-size: 8px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* ── DAY CONTENT ────────────────────── */
+.day-content { padding: 14px 16px 120px; }
+
+.day-header { margin-bottom: 14px; }
+.day-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1; }
+.day-sub { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: 0.15em; text-transform: uppercase; }
+.day-rest { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; background: transparent; border: 1px solid var(--border); border-radius: var(--radius); padding: 3px 10px; font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; }
+.day-rest strong { color: var(--text); }
+
+.day-actions { display: flex; gap: 8px; margin-bottom: 14px; }
+.btn-reset { flex: 1; background: transparent; border: 1px solid var(--bg4); border-radius: var(--radius); padding: 9px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); cursor: pointer; transition: all 0.2s; }
+.btn-reset:hover { border-color: var(--red); color: var(--red); }
+.btn-reset:active { background: var(--bg4); }
+.btn-mark-all { flex: 1; background: var(--phase); border: 1px solid var(--phase); border-radius: var(--radius); padding: 9px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--bg); cursor: pointer; font-weight: 700; transition: all 0.2s; }
+.btn-mark-all:hover { background: var(--text); border-color: var(--text); }
+.btn-mark-all:active { opacity: 0.7; }
+
+/* ── CARDIO ONLY DAY ────────────────── */
+.cardio-day-card {
+  background: rgba(109,197,109,0.04);
+  border: 1px solid rgba(109,197,109,0.15);
+  border-radius: var(--radius); padding: 24px 20px;
+  text-align: center;
+}
+.cardio-day-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.5; }
+.cardio-day-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #6dc56d; letter-spacing: 0.1em; }
+.cardio-day-detail { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.7; }
+.cardio-day-detail strong { color: var(--text); }
+.cardio-warning { margin-top: 16px; background: rgba(200,169,110,0.06); border: 1px solid rgba(200,169,110,0.2); border-left: 3px solid var(--phase); border-radius: var(--radius); padding: 10px 12px; font-family: 'Space Mono', monospace; font-size: 10px; color: var(--phase); letter-spacing: 0.05em; }
+
+/* ── SUPERSET GROUP ─────────────────── */
+.ss-group { position: relative; margin-bottom: 8px; }
+.ss-group-bar { position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; background: var(--phase); border-radius: 2px; opacity: 0.5; }
+.ss-group-label { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; font-size: 8px; font-weight: 700; color: var(--phase); text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
+.ss-group > .exercise-card { margin-left: 20px; }
+
+/* ── EXERCISE CARD ──────────────────── */
+.exercise-card {
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+  border-radius: var(--radius); padding: 13px 13px 13px 13px;
+  margin-bottom: 6px; display: flex; align-items: flex-start; gap: 12px;
+  transition: all 0.2s ease; position: relative; overflow: hidden;
+}
+.exercise-card:hover { background: rgba(255,255,255,0.04); }
+.exercise-card.done { opacity: 0.4; background: rgba(109,197,109,0.04); border-color: rgba(109,197,109,0.12); }
+.exercise-card.done .ex-name { text-decoration: line-through; color: var(--muted); }
+.exercise-card.warning-card { border-color: rgba(200,169,110,0.25); background: rgba(200,169,110,0.04); }
+
+/* checkbox */
+.ex-check {
+  width: 24px; height: 24px; flex-shrink: 0; border-radius: var(--radius);
+  border: 2px solid rgba(200,169,110,0.25); background: transparent;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s ease; margin-top: 1px;
+  position: relative;
+}
+.ex-check.checked { background: #6dc56d; border-color: #6dc56d; }
+.ex-check.checked::after { content: "✓"; color: var(--bg); font-size: 12px; font-weight: 800; }
+.exercise-card:active .ex-check { transform: scale(0.92); }
+
+.ex-body { flex: 1; min-width: 0; }
+.ex-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+.ex-name { font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--text); }
+.ex-sets-reps { flex-shrink: 0; text-align: right; }
+.ex-sets { font-family: 'Bebas Neue', sans-serif; font-size: 20px; line-height: 1; color: var(--phase); }
+.ex-reps { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--muted); margin-top: 2px; letter-spacing: 0.1em; }
+
+.ex-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  border-radius: var(--radius); padding: 2px 7px; font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.badge-rpe { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid rgba(255,255,255,0.06); }
+.badge-ss { background: rgba(200,169,110,0.1); color: var(--phase); border: 1px solid rgba(200,169,110,0.2); }
+.badge-ds { background: rgba(138,180,248,0.08); color: #8ab4f8; border: 1px solid rgba(138,180,248,0.15); }
+.badge-knee { background: rgba(200,169,110,0.08); color: var(--phase); border: 1px solid rgba(200,169,110,0.15); }
+.badge-warn { background: rgba(194,59,42,0.1); color: var(--red); border: 1px solid rgba(194,59,42,0.2); }
+
+.ex-notes { margin-top: 5px; font-size: 11px; color: var(--muted); line-height: 1.5; font-style: italic; }
+.ex-notes.warning-note { color: var(--red); font-style: normal; }
+
+/* ── TIMER FAB ──────────────────────── */
+.timer-fab {
+  position: fixed; bottom: 24px; right: 16px;
+  width: 56px; height: 56px; border-radius: var(--radius);
+  background: var(--phase); border: none;
+  cursor: pointer; z-index: 200;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(200,169,110,0.3);
+  transition: all 0.2s; font-family: 'DM Sans', sans-serif;
+}
+.timer-fab:active { transform: scale(0.92); }
+.timer-fab.running { animation: pulse-ring 1.5s infinite; }
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(200,169,110,0.4); }
+  70% { box-shadow: 0 0 0 14px rgba(200,169,110,0); }
+  100% { box-shadow: 0 0 0 0 rgba(200,169,110,0); }
+}
+.timer-fab-icon { font-size: 20px; }
+.timer-fab-time { font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700; color: var(--bg); margin-top: -2px; }
+
+/* ── TIMER OVERLAY ──────────────────── */
+.timer-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(10,10,10,0.97); backdrop-filter: blur(20px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 32px 24px;
+  opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.timer-overlay.open { opacity: 1; pointer-events: all; }
+
+.timer-close { position: absolute; top: 20px; right: 20px; background: transparent; border: 1px solid var(--border); border-radius: var(--radius); width: 36px; height: 36px; cursor: pointer; font-size: 18px; color: var(--muted); display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+.timer-close:hover { border-color: var(--phase); color: var(--phase); }
+
+.timer-ring-wrap { position: relative; width: 200px; height: 200px; margin-bottom: 32px; }
+.timer-ring-svg { transform: rotate(-90deg); }
+.timer-ring-bg { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 8; }
+.timer-ring-prog { fill: none; stroke: var(--phase); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.5s linear; }
+.timer-ring-text {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.timer-digits { font-family: 'Bebas Neue', sans-serif; font-size: 68px; line-height: 1; letter-spacing: 0.02em; }
+.timer-label-sm { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.2em; }
+
+.timer-presets { display: flex; gap: 6px; margin-bottom: 28px; }
+.timer-preset {
+  flex: 1; padding: 10px 0; background: transparent; border: 1px solid var(--bg4);
+  border-radius: var(--radius); color: var(--text); font-family: 'Space Mono', monospace;
+  font-size: 11px; font-weight: 400; cursor: pointer; transition: all 0.2s; text-align: center; letter-spacing: 0.1em;
+}
+.timer-preset:hover { border-color: var(--phase); }
+.timer-preset.active { border-color: var(--phase); background: var(--phase-dim); color: var(--phase); }
+.timer-preset:active { opacity: 0.7; }
+
+.timer-controls { display: flex; gap: 12px; width: 100%; max-width: 260px; }
+.btn-timer-start {
+  flex: 1; padding: 16px; background: var(--phase); border: none;
+  border-radius: var(--radius); font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 0.15em;
+  color: var(--bg); cursor: pointer; transition: all 0.2s;
+}
+.btn-timer-start:hover { background: var(--text); }
+.btn-timer-start:active { opacity: 0.8; }
+.btn-timer-reset {
+  width: 54px; padding: 16px; background: transparent; border: 1px solid var(--bg4);
+  border-radius: var(--radius); font-size: 18px; cursor: pointer; transition: all 0.2s; color: var(--muted);
+}
+.btn-timer-reset:hover { border-color: var(--phase); }
+.btn-timer-reset:active { background: var(--bg4); }
+
+/* ── DONE BANNER ─────────────────────── */
+.done-banner {
+  background: rgba(109,197,109,0.08);
+  border: 1px solid rgba(109,197,109,0.2);
+  border-radius: var(--radius); padding: 16px; margin-bottom: 16px;
+  text-align: center; display: none;
+}
+.done-banner.show { display: block; }
+.done-banner-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #6dc56d; letter-spacing: 0.1em; }
+.done-banner-sub { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: 0.15em; }
+
+/* ── SECTION DIVIDER ─────────────────── */
+.section-div { display: flex; align-items: center; gap: 8px; margin: 16px 0 10px; }
+.section-div-line { flex: 1; height: 1px; background: var(--border); }
+.section-div-label { font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 400; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.2em; }
+
+/* ── LEGEND ──────────────────────────── */
+.legend { margin-top: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+.legend-title { font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 400; color: var(--phase); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 8px; }
+.legend-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+.legend-row:last-child { margin-bottom: 0; }
+.legend-row span { font-size: 10px; color: var(--muted); }
+
+/* ── TRANSITIONS ─────────────────────── */
+.fade-in { animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-row">
+      <div class="logo">NL<span>·PLAN</span></div>
+      <div class="topbar-right">
+        <div class="topbar-date" id="topbar-date"></div>
+        <div class="progress-wrap" style="margin-top:4px">
+          <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+          <div class="progress-pct" id="prog-pct">0%</div>
+        </div>
+      </div>
+    </div>
+    <div class="phase-scroll" id="phase-tabs"></div>
+  </div>
+
+  <!-- PHASE HEADER -->
+  <div id="phase-header"></div>
+
+  <!-- DAY TABS -->
+  <div class="day-tabs-wrap">
+    <div class="day-scroll" id="day-tabs"></div>
+  </div>
+
+  <!-- DAY CONTENT -->
+  <div class="day-content fade-in" id="day-content"></div>
+</div>
+
+<!-- TIMER FAB -->
+<button class="timer-fab" id="timer-fab" onclick="openTimer()">
+  <div class="timer-fab-icon">⏱</div>
+  <div class="timer-fab-time" id="fab-time"></div>
+</button>
+
+<!-- TIMER OVERLAY -->
+<div class="timer-overlay" id="timer-overlay">
+  <button class="timer-close" onclick="closeTimer()">✕</button>
+  <div class="timer-ring-wrap">
+    <svg class="timer-ring-svg" width="200" height="200" viewBox="0 0 200 200">
+      <circle class="timer-ring-bg" cx="100" cy="100" r="88"/>
+      <circle class="timer-ring-prog" id="ring" cx="100" cy="100" r="88" stroke-dasharray="553" stroke-dashoffset="0"/>
+    </svg>
+    <div class="timer-ring-text">
+      <div class="timer-digits" id="timer-display">60</div>
+      <div class="timer-label-sm" id="timer-status">LISTO</div>
+    </div>
+  </div>
+  <div class="timer-presets">
+    <button class="timer-preset" onclick="setPreset(45)">45s</button>
+    <button class="timer-preset active" onclick="setPreset(60)">60s</button>
+    <button class="timer-preset" onclick="setPreset(90)">90s</button>
+    <button class="timer-preset" onclick="setPreset(120)">2min</button>
+    <button class="timer-preset" onclick="setPreset(180)">3min</button>
+  </div>
+  <div class="timer-controls">
+    <button class="btn-timer-start" id="btn-start" onclick="toggleTimer()">INICIAR</button>
+    <button class="btn-timer-reset" onclick="resetTimer()">↺</button>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA — 6 PHASES
+═══════════════════════════════════════════ */
+const PHASES = [
+  {
+    id: 0, name: "INTRODUCCIÓN Y TÉCNICA", month: "Abril", monthNums: [4],
+    color: "#c8a96e", colorDim: "rgba(200,169,110,0.08)",
+    rest: "2–3 min",
+    objective: "Aprender los ejercicios, controlar la técnica y establecer líneas base de carga. Volumen moderado.",
+    cardio: { freq: "2×/semana", duration: "35 min", zone: "Zona 2 (130–140 bpm)", mode: "Bicicleta fija o Elíptica" },
+    days: [
+      { name: "DÍA 1", focus: "EMPUJE", sub: "Pecho · Hombro · Tríceps", exercises: [
+        { n: "Press de Banca con Barra", s: 4, r: "8–10", rpe: "8", notes: "Controla la bajada" },
+        { n: "Press Militar Sentado con Mancuernas", s: 3, r: "10–12", rpe: "8" },
+        { n: "Cruces de Polea Bajas", s: 3, r: "12–15", rpe: "9" },
+        { n: "Elevaciones Laterales con Mancuernas", s: 4, r: "12–15", rpe: "9", notes: "Controla la fase excéntrica (bajada)" },
+        { n: "Extensión de Tríceps en Polea con Cuerda", s: 3, r: "12–15", rpe: "9" },
+        { n: "Abdominales Crunch en Polea", s: 3, r: "15–20" }
+      ]},
+      { name: "DÍA 2", focus: "TIRÓN", sub: "Espalda · Hombro Posterior · Bíceps", exercises: [
+        { n: "Jalón al Pecho Agarre Ancho", s: 4, r: "8–10", rpe: "8", notes: "Contrae la espalda" },
+        { n: "Remo con Barra Agarre Supino", s: 4, r: "10–12", rpe: "8" },
+        { n: "Pájaros (Elevaciones Posteriores) con Mancuernas", s: 3, r: "12–15", rpe: "9" },
+        { n: "Encogimientos de Hombros con Mancuernas", s: 3, r: "12–15", rpe: "9" },
+        { n: "Curl de Bíceps con Barra EZ", s: 3, r: "10–12", rpe: "9" },
+        { n: "Flexión Lateral de Tronco (Abdomen)", s: 3, r: "15–20 c/lado" }
+      ]},
+      { name: "DÍA 3", focus: "TORSO SUPERIOR", sub: "Hipertrofia", exercises: [
+        { n: "Press de Banca Inclinado con Mancuernas", s: 4, r: "10–12", rpe: "8" },
+        { n: "Remo al Pecho con Barra T", s: 3, r: "10–12", rpe: "8" },
+        { n: "Aperturas en Máquina", s: 3, r: "12–15 c/u", rpe: "9", ss: 1, notes: "Sin descanso entre ejercicios" },
+        { n: "Flexiones de Pecho", s: 3, r: "12–15 c/u", rpe: "9", ss: 1 },
+        { n: "Elevaciones Laterales en Polea", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 2, notes: "Sin descanso entre ejercicios" },
+        { n: "Pájaros en Máquina", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 2 },
+        { n: "Curl Martillo con Mancuernas", s: 3, r: "10–12", rpe: "9" }
+      ]},
+      { name: "DÍA 4", focus: "EMPUJE", sub: "Bombeo", exercises: [
+        { n: "Press de Pecho en Máquina", s: 4, r: "12–15", rpe: "9", notes: "Foco en conexión mente-músculo" },
+        { n: "Elevaciones Laterales en Máquina o Mancuernas", s: "4–5", r: "15–20", rpe: "9–10", notes: "Baja lentamente" },
+        { n: "Remo al Mentón (Agarre Ancho, controlado)", s: 3, r: "12–15", rpe: "8" },
+        { n: "Press Francés con Mancuernas", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 3, notes: "Sin descanso entre ejercicios" },
+        { n: "Patada de Tríceps", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 3 },
+        { n: "Extensión de Tríceps por encima de la cabeza", s: 3, r: "15–20", rpe: "9–10" }
+      ]},
+      { name: "DÍA 5", focus: "TIRÓN + PIERNA", sub: "Bombeo · Bajo Impacto", exercises: [
+        { n: "Jalón al Pecho Agarre Estrecho Neutro", s: 4, r: "12–15", rpe: "9" },
+        { n: "Remo Gironda (Polea Baja)", s: 3, r: "12–15", rpe: "9" },
+        { n: "Face Pull", s: 3, r: "15–20", rpe: "9–10", notes: "Foco en retracción escapular" },
+        { n: "Curl de Bíceps Inclinado con Mancuernas", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 4, notes: "Sin descanso entre ejercicios" },
+        { n: "Curl Concentrado", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 4 },
+        { n: "Peso Muerto Rumano con Mancuernas o Barra", s: 3, r: "10–12", rpe: "8", knee: true, notes: "Isquiotibiales. Focus en excéntrica." },
+        { n: "Hip Thrust con Barra o Máquina", s: 3, r: "10–12", rpe: "8", knee: true },
+        { n: "Elevación de Piernas Colgado (Abdomen)", s: "3–4", r: "Al fallo técnico" }
+      ]}
+    ]
+  },
+  {
+    id: 1, name: "INTENSIFICACIÓN", month: "Mayo", monthNums: [5],
+    color: "#4ecdc4", colorDim: "rgba(78,205,196,0.10)",
+    rest: "90 seg – 2 min",
+    objective: "Más volumen, técnicas de intensidad, RPE ligeramente más altas. Foco en fatiga metabólica.",
+    cardio: { freq: "2–3×/semana", duration: "40 min", zone: "Zona 2 (130–140 bpm)", mode: "Bicicleta fija o Elíptica" },
+    days: [
+      { name: "DÍA 1", focus: "EMPUJE", exercises: [
+        { n: "Press de Banca con Barra", s: 4, r: "6–8", rpe: "8–9", notes: "Intentar acercarse a 100 kg" },
+        { n: "Press Militar de Pie con Barra", s: 3, r: "8–10", rpe: "8" },
+        { n: "Cruces de Polea Altas", s: 3, r: "12–15", rpe: "9–10", notes: "Foco en el 'apretón' abajo" },
+        { n: "Elevaciones Laterales Inclinado", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 1, notes: "Sin descanso entre ejercicios" },
+        { n: "Remo al Mentón", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 1 },
+        { n: "Extensión de Tríceps con Barra EZ (Banco Inclinado)", s: 3, r: "10–12", rpe: "9" },
+        { n: "Abdominales Crunch con Cuerda en Polea", s: 3, r: "Al fallo técnico" }
+      ]},
+      { name: "DÍA 2", focus: "TIRÓN", exercises: [
+        { n: "Jalón al Pecho Supino (Agarre Estrecho)", s: 4, r: "8–10", rpe: "8" },
+        { n: "Remo con Barra (Agarre Neutro o Barra T)", s: 4, r: "10–12", rpe: "8–9" },
+        { n: "Pájaros con Mancuernas (Banco Inclinado boca abajo)", s: 3, r: "12–15", rpe: "9" },
+        { n: "Encogimientos de Hombros en Barra", s: 3, r: "10–12", rpe: "9" },
+        { n: "Curl de Bíceps con Mancuernas (de pie, alterno)", s: 3, r: "10–12 c/brazo", rpe: "9" },
+        { n: "Plancha Abdominal", s: 3, r: "Al fallo técnico" }
+      ]},
+      { name: "DÍA 3", focus: "TORSO SUPERIOR", exercises: [
+        { n: "Press Inclinado en Máquina", s: 4, r: "10–12", rpe: "8", notes: "Controla la bajada" },
+        { n: "Jalón al Pecho Agarre Neutro Ancho", s: 3, r: "10–12", rpe: "8–9", notes: "Contrae la espalda" },
+        { n: "Aperturas con Mancuernas", s: 3, r: "12–15", rpe: "9", notes: "Controla la bajada lentamente" },
+        { n: "Remo al Pecho con Mancuernas", s: 3, r: "12–15", rpe: "9" },
+        { n: "Curl de Bíceps en Polea Baja", s: 3, r: "Al fallo (bajando peso)", rpe: "10", ds: true, notes: "Reducir peso al fallo en cada serie" }
+      ]},
+      { name: "DÍA 4", focus: "EMPUJE", sub: "Bombeo", exercises: [
+        { n: "Press de Pecho en Máquina (Foco Pecho Superior)", s: 4, r: "12–15", rpe: "9–10" },
+        { n: "Elevaciones Laterales en Máquina", s: 3, r: "15–20 c/u", rpe: "9–10", ss: 2, notes: "Sin descanso entre ejercicios" },
+        { n: "Pájaros en Polea", s: 3, r: "15–20 c/u", rpe: "9–10", ss: 2 },
+        { n: "Remo al Mentón (Agarre Medio, controlado)", s: 3, r: "12–15", rpe: "9" },
+        { n: "Extensión de Tríceps en Polea Alta", s: 3, r: "15–20 c/u", rpe: "9–10", ss: 3, notes: "Sin descanso entre ejercicios" },
+        { n: "Patada de Tríceps", s: 3, r: "15–20 c/u", rpe: "9–10", ss: 3 },
+        { n: "Elevación de Talones Sentado (Gemelos)", s: 4, r: "20–25", rpe: "9–10" }
+      ]},
+      { name: "DÍA 5", focus: "TIRÓN + PIERNA", sub: "Bombeo · Bajo Impacto", exercises: [
+        { n: "Jalón al Pecho Agarre Estrecho Supino", s: 4, r: "12–15", rpe: "9" },
+        { n: "Remo con Mancuerna a una mano", s: 3, r: "12–15 c/brazo", rpe: "9" },
+        { n: "Pájaros con Mancuernas", s: 3, r: "15–20", rpe: "9–10", notes: "Baja lentamente" },
+        { n: "Curl de Bíceps en Polea", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 4, notes: "Sin descanso entre ejercicios" },
+        { n: "Curl Martillo con Mancuernas", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 4 },
+        { n: "Sentadilla Goblet con Mancuerna", s: 3, r: "12–15", rpe: "7–8", knee: true, notes: "Técnica PERFECTA. No bajar del todo si hay molestia." },
+        { n: "Leg Press (carga ligera, rango controlado)", s: 3, r: "12–15", rpe: "7–8", knee: true, notes: "Solo mitad superior del recorrido. No doblar rodillas de más." },
+        { n: "Elevación de Talones de Pie", s: 4, r: "20–25", rpe: "9–10" },
+        { n: "Oblicuos en Polea (Abdomen)", s: 3, r: "15–20 c/lado" }
+      ]}
+    ]
+  },
+  {
+    id: 2, name: "DENSIDAD Y RANGO DE MOVIMIENTO", month: "Jun – Jul", monthNums: [6, 7],
+    color: "#e07b4c", colorDim: "rgba(224,123,76,0.10)",
+    rest: "60–90 seg máx.",
+    objective: "Aumentar estrés metabólico reduciendo descansos. Cambio a mancuernas para mayor estiramiento.",
+    cardio: { freq: "3×/semana (Miér obligatorio)", duration: "45 min", zone: "Zona 2 (130–140 bpm)", mode: "Bicicleta fija o Elíptica" },
+    days: [
+      { name: "LUNES", focus: "EMPUJE", sub: "Pecho · Hombro Lateral", exercises: [
+        { n: "Press de Banca con Mancuernas", s: 4, r: "8–10", notes: "Baja profundo, estira el pecho" },
+        { n: "Press Militar Sentado con Mancuernas", s: 4, r: "10–12" },
+        { n: "Aperturas en Banco Inclinado (Polea o Mancuernas)", s: 3, r: "12–15" },
+        { n: "Elevaciones Laterales en Polea (por detrás de la espalda)", s: 4, r: "15" },
+        { n: "Extensión de Tríceps sobre la cabeza con Cuerda", s: 4, r: "12–15" }
+      ]},
+      { name: "MARTES", focus: "TIRÓN", sub: "Espalda · Hombro Posterior", exercises: [
+        { n: "Dominadas o Jalón al Pecho Agarre Neutro", s: 4, r: "8–10" },
+        { n: "Remo con Mancuerna a una mano", s: 4, r: "10–12", notes: "Objetivo: 65 kg equiv." },
+        { n: "Face Pull en Polea Alta", s: 4, r: "15" },
+        { n: "Pájaros con Mancuernas (pecho apoyado en banco)", s: 3, r: "15" },
+        { n: "Curl de Bíceps Alterno con Mancuernas", s: 4, r: "10–12", notes: "Objetivo: 17.5 kg por brazo" }
+      ]},
+      { name: "MIÉRCOLES", focus: "CARDIO", sub: "Descanso Activo", cardioOnly: true, exercises: [] },
+      { name: "JUEVES", focus: "TORSO", sub: "Superseries Antagonistas", exercises: [
+        { n: "Press Inclinado con Barra", s: 3, r: "10 c/u", ss: 1, notes: "Sin descanso entre ejercicios" },
+        { n: "Remo con Barra", s: 3, r: "10 c/u", ss: 1 },
+        { n: "Cruces de Polea Alta", s: 3, r: "15", ss: 2, notes: "Sin descanso" },
+        { n: "Jalón al Pecho Supino", s: 3, r: "12", ss: 2 },
+        { n: "Elevaciones Laterales con Mancuernas", s: 4, r: "15 c/u", ss: 3, notes: "Sin descanso" },
+        { n: "Elevaciones Posteriores", s: 4, r: "15 c/u", ss: 3 },
+        { n: "Elevación de piernas colgado (Abdomen)", s: 3, r: "Al fallo" }
+      ]},
+      { name: "VIERNES", focus: "BRAZOS + HOMBRO", sub: "Aislamiento", exercises: [
+        { n: "Curl con Barra EZ", s: 4, r: "10–12" },
+        { n: "Press Francés con Barra EZ o Mancuernas", s: 4, r: "10–12" },
+        { n: "Curl Martillo en Polea con Cuerda", s: 3, r: "15" },
+        { n: "Extensión de Tríceps en Polea (barra recta)", s: 3, r: "15" },
+        { n: "Elevaciones Laterales en Máquina", s: 4, r: "20", notes: "Quemazón pura. Sin trampa." }
+      ]},
+      { name: "SÁBADO", focus: "PIERNA + CORE", sub: "Cadena Posterior", exercises: [
+        { n: "Peso Muerto Rumano con Barra", s: 4, r: "10–12", knee: true, notes: "Toda la tensión en isquios y glúteos." },
+        { n: "Curl Femoral Tumbado o Sentado", s: 4, r: "12–15", knee: true },
+        { n: "Hip Thrust (Puente de Glúteo) con Barra", s: 3, r: "12–15", knee: true },
+        { n: "Elevación de Talones (Gemelos) de Pie", s: 5, r: "20" },
+        { n: "Plancha Abdominal", s: 4, r: "45–60 seg" }
+      ]}
+    ]
+  },
+  {
+    id: 3, name: "FATIGA METABÓLICA", month: "Ago – Sep", monthNums: [8, 9],
+    color: "#e84855", colorDim: "rgba(232,72,85,0.10)",
+    rest: "60–90 seg",
+    objective: "Déficit calórico intenso. Drop Sets en últimos ejercicios para vaciar glucógeno y dar aspecto rocoso.",
+    cardio: { freq: "3×/semana (Miér obligatorio)", duration: "45 min", zone: "Zona 2/3 (135–145 bpm)", mode: "Bicicleta fija o Elíptica" },
+    days: [
+      { name: "LUNES", focus: "EMPUJE", exercises: [
+        { n: "Press de Banca con Barra", s: 4, r: "8–10" },
+        { n: "Press Inclinado en Máquina (Smith/Multipower)", s: 3, r: "10–12" },
+        { n: "Elevaciones Laterales con Mancuernas", s: 4, r: "12–15", ds: true, notes: "Drop Set en última serie: bajar peso a la mitad, al fallo" },
+        { n: "Cruces de Polea Bajas", s: 3, r: "15" },
+        { n: "Extensión de Tríceps en Polea", s: 3, r: "12–15", ds: true, notes: "Drop Set en la última serie" }
+      ]},
+      { name: "MARTES", focus: "TIRÓN", exercises: [
+        { n: "Remo con Barra T o en Máquina (pecho apoyado)", s: 4, r: "10–12" },
+        { n: "Jalón al Pecho Agarre Ancho", s: 3, r: "10–12" },
+        { n: "Pájaros en Máquina (Peck Deck Inverso)", s: 4, r: "15", ds: true, notes: "Drop Set en última serie" },
+        { n: "Curl de Bíceps en Banco Scott o Máquina", s: 3, r: "10–12", ds: true, notes: "Drop Set en última serie" },
+        { n: "Encogimientos de Hombro", s: 3, r: "15" }
+      ]},
+      { name: "MIÉRCOLES", focus: "CARDIO", sub: "Descanso Activo", cardioOnly: true, exercises: [] },
+      { name: "JUEVES", focus: "TORSO SUPERIOR", sub: "Bombeo", exercises: [
+        { n: "Press de Pecho en Máquina Convergente", s: 4, r: "12–15" },
+        { n: "Remo Gironda (Polea Baja)", s: 4, r: "12–15" },
+        { n: "Elevaciones Laterales en Polea a una mano", s: 4, r: "15 c/brazo" },
+        { n: "Curl de Bíceps Inclinado (Mancuernas)", s: 3, r: "12–15" },
+        { n: "Patada de Tríceps con Polea", s: 3, r: "15 c/brazo" }
+      ]},
+      { name: "VIERNES", focus: "HOMBRO 3D + ABDOMEN", exercises: [
+        { n: "Press Militar en Máquina", s: 4, r: "10–12" },
+        { n: "Elevaciones Laterales pesadas (trampa)", s: 4, r: "10", ss: 1, notes: "Primero con trampa, luego estricto con peso ligero" },
+        { n: "Elevaciones Laterales estrictas (peso ligero)", s: 4, r: "10", ss: 1 },
+        { n: "Face Pull", s: 4, r: "15–20" },
+        { n: "Crunch en Polea Alta (Abdomen)", s: 4, r: "15–20" },
+        { n: "Giros Rusos o Planchas Laterales", s: 3, r: "Al fallo" }
+      ]},
+      { name: "SÁBADO", focus: "PIERNA + CORE", sub: "Cadena Posterior", exercises: [
+        { n: "Peso Muerto Rumano con Mancuernas", s: 4, r: "12", knee: true },
+        { n: "Curl Femoral a una pierna", s: 3, r: "15 c/pierna", knee: true },
+        { n: "Extensiones de Cuádriceps (MUY LIGERO)", s: 3, r: "20", knee: true, warning: true, notes: "⚠️ SOLO si hay CERO dolor. Apretar arriba, bajada 3 seg. Si molesta → Sentadilla Búlgara estática sin peso." },
+        { n: "Elevación de Talones Sentado (Costurera)", s: 4, r: "20" },
+        { n: "Elevación de Piernas Colgado", s: 4, r: "Al fallo" }
+      ]}
+    ]
+  },
+  {
+    id: 4, name: "REFINAMIENTO ESTÉTICO", month: "Oct – Nov", monthNums: [10, 11],
+    color: "#7b97f6", colorDim: "rgba(123,151,246,0.10)",
+    rest: "45–60 seg",
+    objective: "Foco absoluto en proporción. Hombros anchos, cintura estrecha, brazos densos. Cargas bajas, reps altas.",
+    cardio: { freq: "3×/semana", duration: "40 min", zone: "Zona 2/3 (135–145 bpm)", mode: "Bicicleta fija o Elíptica" },
+    days: [
+      { name: "LUNES", focus: "PECHO Y ESPALDA ANCHO", exercises: [
+        { n: "Press Inclinado en Máquina", s: 4, r: "12–15" },
+        { n: "Aperturas (Polea o Mancuernas)", s: 4, r: "12–15" },
+        { n: "Jalón al Pecho Agarre Ancho", s: 4, r: "12–15" },
+        { n: "Pull-over en Polea", s: 3, r: "15–20", notes: "Para expandir la caja torácica" }
+      ]},
+      { name: "MARTES", focus: "BRAZOS + HOMBRO LATERAL", exercises: [
+        { n: "Curl Barra EZ", s: 4, r: "12–15" },
+        { n: "Press Francés", s: 4, r: "12–15" },
+        { n: "Bíceps en Polea", s: 4, r: "12–15 c/u", ss: 1, notes: "Alternando sin descanso" },
+        { n: "Tríceps en Polea", s: 4, r: "12–15 c/u", ss: 1 },
+        { n: "Elevaciones Laterales", s: 5, r: "20", notes: "Quemazón total." }
+      ]},
+      { name: "JUEVES", focus: "HOMBRO COMPLETO", exercises: [
+        { n: "Press Militar Mancuernas", s: 4, r: "10–12" },
+        { n: "Elevaciones Laterales", s: 4, r: "15–20" },
+        { n: "Pájaros (Elevaciones Posteriores)", s: 4, r: "15" },
+        { n: "Face Pull", s: 4, r: "15–20" },
+        { n: "Encogimientos de Hombros", s: 3, r: "15" }
+      ]},
+      { name: "VIERNES", focus: "PECHO Y ESPALDA", sub: "Densidad", exercises: [
+        { n: "Remo Barra", s: 4, r: "10–12" },
+        { n: "Remo Mancuerna", s: 4, r: "12–15" },
+        { n: "Press Plano Mancuernas", s: 4, r: "10–12" },
+        { n: "Cruces Polea", s: 3, r: "15" }
+      ]},
+      { name: "SÁBADO", focus: "PIERNA Y CORE", exercises: [
+        { n: "Peso Muerto Rumano", s: 4, r: "12–15", knee: true },
+        { n: "Curl Femoral", s: 4, r: "15", knee: true },
+        { n: "Gemelos de Pie", s: 5, r: "20–25" },
+        { n: "Elevaciones de piernas colgado", s: 4, r: "Al fallo" },
+        { n: "Planchas Laterales", s: 3, r: "45 seg" },
+        { n: "Vacío Abdominal (Stomach Vacuum)", s: 3, r: "20–30 seg", notes: "Para afinar cintura." }
+      ]}
+    ]
+  },
+  {
+    id: 5, name: "PUESTA A PUNTO", month: "Diciembre", monthNums: [12],
+    color: "#d4a5e5", colorDim: "rgba(212,165,229,0.08)",
+    rest: "60–90 seg",
+    objective: "Bombear sangre, meter glucógeno al músculo. El % de grasa ya debe estar en su punto más bajo.",
+    specialNote: "Todos los ejercicios a 3 series × 15 reps. RPE máx 7–8. NO llegar al fallo muscular. Después de cada serie: poses isométricas frente al espejo.",
+    cardio: { freq: "2×/semana", duration: "30 min", zone: "Zona 1/2 (120–130 bpm)", mode: "Caminata a paso vivo o Bicicleta suave" },
+    days: [
+      { name: "DÍA 1", focus: "EMPUJE", sub: "Pecho · Hombro · Tríceps", exercises: [
+        { n: "Press de Banca con Barra", s: 3, r: "15", rpe: "7–8", notes: "Poses isométricas después de cada serie" },
+        { n: "Press Militar Sentado con Mancuernas", s: 3, r: "15", rpe: "7–8" },
+        { n: "Cruces de Polea Bajas", s: 3, r: "15", rpe: "7–8" },
+        { n: "Elevaciones Laterales con Mancuernas", s: 3, r: "15", rpe: "7–8" },
+        { n: "Extensión de Tríceps en Polea con Cuerda", s: 3, r: "15", rpe: "7–8" },
+        { n: "Abdominales Crunch en Polea", s: 3, r: "15" }
+      ]},
+      { name: "DÍA 2", focus: "TIRÓN", sub: "Espalda · Hombro Posterior · Bíceps", exercises: [
+        { n: "Jalón al Pecho Agarre Ancho", s: 3, r: "15", rpe: "7–8" },
+        { n: "Remo con Barra Agarre Supino", s: 3, r: "15", rpe: "7–8" },
+        { n: "Pájaros (Elevaciones Posteriores) con Mancuernas", s: 3, r: "15", rpe: "7–8" },
+        { n: "Encogimientos de Hombros con Mancuernas", s: 3, r: "15", rpe: "7–8" },
+        { n: "Curl de Bíceps con Barra EZ", s: 3, r: "15", rpe: "7–8" },
+        { n: "Flexión Lateral de Tronco", s: 3, r: "15 c/lado" }
+      ]},
+      { name: "DÍA 3", focus: "TORSO SUPERIOR", exercises: [
+        { n: "Press de Banca Inclinado con Mancuernas", s: 3, r: "15", rpe: "7–8" },
+        { n: "Remo al Pecho con Barra T", s: 3, r: "15", rpe: "7–8" },
+        { n: "Aperturas en Máquina", s: 3, r: "15 c/u", ss: 1 },
+        { n: "Flexiones de Pecho", s: 3, r: "15 c/u", ss: 1 },
+        { n: "Curl Martillo con Mancuernas", s: 3, r: "15", rpe: "7–8" }
+      ]},
+      { name: "DÍA 4", focus: "EMPUJE", sub: "Bombeo", exercises: [
+        { n: "Press de Pecho en Máquina", s: 3, r: "15", rpe: "7–8" },
+        { n: "Elevaciones Laterales en Máquina", s: 3, r: "15", rpe: "7–8" },
+        { n: "Remo al Mentón (controlado)", s: 3, r: "15", rpe: "7–8" },
+        { n: "Extensión de Tríceps en Polea", s: 3, r: "15", rpe: "7–8" }
+      ]},
+      { name: "DÍA 5", focus: "TIRÓN + PIERNA", sub: "Bajo Impacto", exercises: [
+        { n: "Jalón al Pecho Agarre Estrecho Neutro", s: 3, r: "15", rpe: "7–8" },
+        { n: "Remo Gironda (Polea Baja)", s: 3, r: "15", rpe: "7–8" },
+        { n: "Face Pull", s: 3, r: "15", rpe: "7–8" },
+        { n: "Curl de Bíceps Alterno con Mancuernas", s: 3, r: "15", rpe: "7–8" },
+        { n: "Peso Muerto Rumano", s: 3, r: "15", knee: true, rpe: "7–8" },
+        { n: "Hip Thrust", s: 3, r: "15", knee: true, rpe: "7–8" },
+        { n: "Elevación de Piernas Colgado", s: 3, r: "15" }
+      ]}
+    ]
+  }
+];
+
+/* ═══════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════ */
+let state = { phase: 0, day: 0 };
+let checks = {};
+
+const STORAGE_KEY = 'nlPlan_v3';
+
+function loadStorage() {
+  try { checks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { checks = {}; }
+}
+function saveStorage() {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(checks));
+}
+
+function exKey(p, d, e) { return `p${p}_d${d}_e${e}`; }
+
+function isChecked(p, d, e) { return !!checks[exKey(p, d, e)]; }
+
+function toggle(p, d, e) {
+  const k = exKey(p, d, e);
+  checks[k] = !checks[k];
+  saveStorage();
+  render();
+}
+
+function resetDay(p, d) {
+  const phase = PHASES[p];
+  const day = phase.days[d];
+  day.exercises.forEach((_, i) => { delete checks[exKey(p, d, i)]; });
+  saveStorage();
+  render();
+}
+
+function markAllDay(p, d) {
+  const phase = PHASES[p];
+  const day = phase.days[d];
+  day.exercises.forEach((_, i) => { checks[exKey(p, d, i)] = true; });
+  saveStorage();
+  render();
+}
+
+/* ═══════════════════════════════════════════
+   PROGRESS
+═══════════════════════════════════════════ */
+function calcProgress() {
+  let total = 0, done = 0;
+  PHASES.forEach((ph, pi) => {
+    ph.days.forEach((day, di) => {
+      day.exercises.forEach((_, ei) => {
+        total++;
+        if (isChecked(pi, di, ei)) done++;
+      });
+    });
+  });
+  return total ? Math.round((done / total) * 100) : 0;
+}
+
+function isDayComplete(p, d) {
+  const phase = PHASES[p];
+  const day = phase.days[d];
+  if (!day.exercises.length) return false;
+  return day.exercises.every((_, i) => isChecked(p, d, i));
+}
+
+/* ═══════════════════════════════════════════
+   DETECT CURRENT PHASE
+═══════════════════════════════════════════ */
+function detectCurrentPhase() {
+  const m = new Date().getMonth() + 1;
+  const idx = PHASES.findIndex(ph => ph.monthNums.includes(m));
+  return idx >= 0 ? idx : 0;
+}
+
+/* ═══════════════════════════════════════════
+   RENDER
+═══════════════════════════════════════════ */
+function applyPhaseColor(color, colorDim) {
+  document.documentElement.style.setProperty('--phase', color);
+  document.documentElement.style.setProperty('--phase-dim', colorDim);
+}
+
+function render() {
+  const ph = PHASES[state.phase];
+  applyPhaseColor(ph.color, ph.colorDim);
+  renderPhaseTabs();
+  renderPhaseHeader();
+  renderDayTabs();
+  renderDayContent();
+  renderProgress();
+}
+
+function renderPhaseTabs() {
+  const el = document.getElementById('phase-tabs');
+  el.innerHTML = PHASES.map((ph, i) => `
+    <div class="phase-chip ${i === state.phase ? 'active' : ''}" onclick="selectPhase(${i})">
+      <div class="phase-chip-num" style="color:${ph.color}">${i + 1}</div>
+      <div class="phase-chip-label">${ph.month.split(' ')[0]}</div>
+    </div>
+  `).join('');
+}
+
+function renderPhaseHeader() {
+  const ph = PHASES[state.phase];
+  const c = ph.cardio;
+  document.getElementById('phase-header').innerHTML = `
+    <div class="phase-header">
+      <div class="phase-name">FASE ${state.phase + 1} — ${ph.name}</div>
+      <div class="phase-meta">
+        <div class="meta-pill">📅 <strong>${ph.month}</strong></div>
+        <div class="meta-pill">⏸ Descanso: <strong>${ph.rest}</strong></div>
+      </div>
+      <div class="phase-obj">${ph.objective}</div>
+      ${ph.specialNote ? `<div class="phase-special-note">${ph.specialNote}</div>` : ''}
+    </div>
+    <div class="cardio-summary">
+      <div class="cardio-icon">🚴</div>
+      <div class="cardio-info">
+        <div class="cardio-title">CARDIO — ${c.freq}</div>
+        <div class="cardio-detail">${c.duration} · <strong>${c.zone}</strong><br>${c.mode} — Sin impacto articular</div>
+      </div>
+    </div>
+  `;
+}
+
+function renderDayTabs() {
+  const ph = PHASES[state.phase];
+  const el = document.getElementById('day-tabs');
+  el.innerHTML = ph.days.map((day, i) => {
+    const complete = isDayComplete(state.phase, i);
+    return `
+      <div class="day-tab ${i === state.day ? 'active' : ''} ${day.cardioOnly ? 'cardio-day' : ''} ${complete ? 'completed-day' : ''}" onclick="selectDay(${i})">
+        <div class="day-tab-name">${day.name}</div>
+        <div class="day-tab-focus">${day.focus}</div>
+      </div>
+    `;
+  }).join('');
+  // scroll active into view
+  const activeTab = el.querySelector('.day-tab.active');
+  if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+function renderDayContent() {
+  const ph = PHASES[state.phase];
+  const day = ph.days[state.day];
+  const el = document.getElementById('day-content');
+  el.className = 'day-content fade-in';
+  void el.offsetWidth; // trigger reflow for animation
+
+  if (day.cardioOnly) {
+    const c = ph.cardio;
+    el.innerHTML = `
+      <div class="cardio-day-card">
+        <div class="cardio-day-icon">🚴</div>
+        <div class="cardio-day-title">SESIÓN DE CARDIO</div>
+        <div class="cardio-day-detail">
+          <strong>${c.duration}</strong> de cardio continuo<br>
+          Zona: <strong>${c.zone}</strong><br>
+          Modalidad: <strong>${c.mode}</strong>
+        </div>
+        <div class="cardio-warning">⚠️ Siempre elegir bicicleta fija o elíptica. Evitar correr — proteger el tendón rotuliano.</div>
+      </div>
+    `;
+    return;
+  }
+
+  const allDone = day.exercises.length > 0 && day.exercises.every((_, i) => isChecked(state.phase, state.day, i));
+
+  // Group exercises by superset
+  const groups = [];
+  let i = 0;
+  while (i < day.exercises.length) {
+    const ex = day.exercises[i];
+    if (ex.ss) {
+      const ssNum = ex.ss;
+      const group = [{ ex, idx: i }];
+      while (i + 1 < day.exercises.length && day.exercises[i + 1].ss === ssNum) {
+        i++;
+        group.push({ ex: day.exercises[i], idx: i });
+      }
+      groups.push({ type: 'ss', items: group });
+    } else {
+      groups.push({ type: 'single', ex, idx: i });
+    }
+    i++;
+  }
+
+  const exercisesHTML = groups.map(g => {
+    if (g.type === 'single') {
+      return renderExercise(g.ex, g.idx);
+    } else {
+      const itemsHTML = g.items.map(({ ex, idx }) => renderExercise(ex, idx)).join('');
+      return `<div class="ss-group">${itemsHTML}</div>`;
+    }
+  }).join('');
+
+  el.innerHTML = `
+    <div class="day-header">
+      <div class="day-title" style="color:var(--phase)">${day.focus}</div>
+      ${day.sub ? `<div class="day-sub">${day.sub}</div>` : ''}
+      <div class="day-rest">⏱ Descanso: <strong>${ph.rest}</strong></div>
+    </div>
+    ${allDone ? `<div class="done-banner show"><div class="done-banner-title">✅ SESIÓN COMPLETADA</div><div class="done-banner-sub">¡Excelente trabajo, Nicolas!</div></div>` : ''}
+    <div class="day-actions">
+      <button class="btn-reset" onclick="resetDay(${state.phase},${state.day})">↺ Resetear día</button>
+      <button class="btn-mark-all" onclick="markAllDay(${state.phase},${state.day})">✓ Marcar todo</button>
+    </div>
+    <div class="section-div"><div class="section-div-line"></div><div class="section-div-label">${day.exercises.length} ejercicios</div><div class="section-div-line"></div></div>
+    ${exercisesHTML}
+    <div class="legend">
+      <div class="legend-title">Leyenda</div>
+      <div class="legend-row"><span class="badge badge-ss">SUPERSERIE</span><span>Dos ejercicios sin descanso entre ellos</span></div>
+      <div class="legend-row"><span class="badge badge-ds">DROP SET</span><span>Reducir peso al fallo y continuar</span></div>
+      <div class="legend-row"><span class="badge badge-knee">🦵 RODILLA</span><span>Ejercicio con impacto potencial — ejecutar con cuidado</span></div>
+    </div>
+  `;
+}
+
+function renderExercise(ex, idx) {
+  const checked = isChecked(state.phase, state.day, idx);
+  const badges = [];
+  if (ex.rpe) badges.push(`<span class="badge badge-rpe">RPE ${ex.rpe}</span>`);
+  if (ex.ss) badges.push(`<span class="badge badge-ss">🔗 SUPERSERIE</span>`);
+  if (ex.ds) badges.push(`<span class="badge badge-ds">⬇ DROP SET</span>`);
+  if (ex.knee) badges.push(`<span class="badge badge-knee">🦵 RODILLA</span>`);
+  if (ex.warning) badges.push(`<span class="badge badge-warn">⚠️ PRECAUCIÓN</span>`);
+
+  return `
+    <div class="exercise-card ${checked ? 'done' : ''} ${ex.warning ? 'warning-card' : ''}" onclick="toggle(${state.phase},${state.day},${idx})">
+      <div class="ex-check ${checked ? 'checked' : ''}"></div>
+      <div class="ex-body">
+        <div class="ex-top">
+          <div class="ex-name">${ex.n}</div>
+          <div class="ex-sets-reps">
+            <div class="ex-sets">${ex.s}<span style="font-size:12px;font-weight:600;color:var(--muted)">×</span></div>
+            <div class="ex-reps">${ex.r}</div>
+          </div>
+        </div>
+        ${badges.length ? `<div class="ex-badges">${badges.join('')}</div>` : ''}
+        ${ex.notes ? `<div class="ex-notes ${ex.warning ? 'warning-note' : ''}">${ex.notes}</div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+function renderProgress() {
+  const pct = calcProgress();
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+  // date
+  const now = new Date();
+  document.getElementById('topbar-date').textContent = now.toLocaleDateString('es-AR', { weekday:'short', day:'numeric', month:'short' }).toUpperCase();
+}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════ */
+function selectPhase(i) {
+  state.phase = i;
+  state.day = 0;
+  render();
+}
+
+function selectDay(i) {
+  state.day = i;
+  renderDayTabs();
+  renderDayContent();
+}
+
+/* ═══════════════════════════════════════════
+   TIMER
+═══════════════════════════════════════════ */
+let timerTotal = 60, timerLeft = 60, timerRunning = false, timerInterval = null;
+const CIRCUMFERENCE = 2 * Math.PI * 88; // r=88
+
+function openTimer() { document.getElementById('timer-overlay').classList.add('open'); updateTimerUI(); }
+function closeTimer() { document.getElementById('timer-overlay').classList.remove('open'); }
+
+function setPreset(sec) {
+  if (timerRunning) { clearInterval(timerInterval); timerRunning = false; }
+  timerTotal = sec;
+  timerLeft = sec;
+  document.querySelectorAll('.timer-preset').forEach(b => {
+    b.classList.toggle('active', parseInt(b.textContent) === sec || (b.textContent === '2min' && sec === 120) || (b.textContent === '3min' && sec === 180));
+  });
+  updateTimerUI();
+}
+
+function toggleTimer() {
+  if (timerRunning) {
+    clearInterval(timerInterval); timerRunning = false;
+  } else {
+    if (timerLeft <= 0) timerLeft = timerTotal;
+    timerRunning = true;
+    timerInterval = setInterval(() => {
+      timerLeft--;
+      if (timerLeft <= 0) {
+        timerLeft = 0; timerRunning = false;
+        clearInterval(timerInterval);
+        try { navigator.vibrate && navigator.vibrate([200, 100, 200]); } catch(e) {}
+        document.getElementById('timer-status').textContent = '¡LISTO!';
+      }
+      updateTimerUI();
+    }, 1000);
+  }
+  updateTimerUI();
+}
+
+function resetTimer() {
+  clearInterval(timerInterval); timerRunning = false;
+  timerLeft = timerTotal;
+  updateTimerUI();
+}
+
+function updateTimerUI() {
+  const ring = document.getElementById('ring');
+  const disp = document.getElementById('timer-display');
+  const status = document.getElementById('timer-status');
+  const fabTime = document.getElementById('fab-time');
+  const fab = document.getElementById('timer-fab');
+  const btnStart = document.getElementById('btn-start');
+
+  const progress = timerLeft / timerTotal;
+  const offset = CIRCUMFERENCE * (1 - progress);
+  ring.style.strokeDashoffset = offset;
+
+  const m = Math.floor(timerLeft / 60);
+  const s = timerLeft % 60;
+  const timeStr = m > 0 ? `${m}:${s.toString().padStart(2,'0')}` : `${s}`;
+  disp.textContent = timeStr;
+  fabTime.textContent = timerRunning ? timeStr : '';
+
+  if (timerLeft <= 0) {
+    status.textContent = '¡LISTO!';
+    ring.style.stroke = '#6dc56d';
+  } else {
+    ring.style.stroke = 'var(--phase)';
+    status.textContent = timerRunning ? 'CORRIENDO' : (timerLeft < timerTotal ? 'PAUSADO' : 'LISTO');
+  }
+
+  btnStart.textContent = timerRunning ? 'PAUSAR' : (timerLeft < timerTotal && timerLeft > 0 ? 'REANUDAR' : 'INICIAR');
+  fab.classList.toggle('running', timerRunning);
+}
+
+/* ═══════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════ */
+loadStorage();
+state.phase = detectCurrentPhase();
+render();
+updateTimerUI();
+</script>
+</body>
+</html>
