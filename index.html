@@ -2,1027 +2,1255 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="format-detection" content="telephone=no">
-<title>NL · Plan Anual</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NL · 12 Semanas — Plan Completo</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #0a0a0a;
-  --bg2: #0d0d0d;
-  --bg3: #151515;
-  --bg4: #2a2a2a;
-  --border: rgba(200,169,110,0.12);
-  --text: #f5f0e8;
-  --muted: #888;
-  --muted2: #555;
-  --phase: #c8a96e;
-  --phase-dim: rgba(200,169,110,0.08);
-  --red: #c23b2a;
-  --radius: 4px;
-  --radius-sm: 2px;
+  --bg:       #0d0d0f;
+  --bg2:      #141417;
+  --bg3:      #1c1c21;
+  --bg4:      #242429;
+  --bg5:      #2c2c33;
+  --line:     rgba(255,255,255,0.07);
+  --line2:    rgba(255,255,255,0.13);
+  --text:     #e8e6e0;
+  --muted:    #7a7872;
+  --dim:      #4a4844;
+  --orange:   #e8612a;
+  --orange-d: rgba(232,97,42,0.12);
+  --blue:     #3a7bd5;
+  --blue-d:   rgba(58,123,213,0.12);
+  --green:    #2d9e6b;
+  --green-d:  rgba(45,158,107,0.12);
+  --yellow:   #d4a017;
+  --yellow-d: rgba(212,160,23,0.10);
+  --red:      #c94040;
+  --font-h:   'Barlow Condensed', sans-serif;
+  --font-b:   'Barlow', sans-serif;
 }
-* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:15px;line-height:1.6;}
 
-/* ── LAYOUT ──────────────────────────── */
-#app { max-width: 500px; margin: 0 auto; min-height: 100vh; position: relative; }
+/* ── HEADER ── */
+.header{background:var(--bg2);border-bottom:1px solid var(--line2);padding:2rem 1.5rem 1.5rem;position:relative;overflow:hidden;}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--orange),transparent 60%);}
+.header-inner{max-width:960px;margin:0 auto;}
+.header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+.brand{font-family:var(--font-h);font-size:clamp(2.5rem,7vw,4rem);font-weight:900;letter-spacing:-0.02em;line-height:.9;color:var(--text);}
+.brand span{color:var(--orange);}
+.header-right{display:flex;flex-direction:column;align-items:flex-end;gap:4px;}
+.header-right .tag{font-family:var(--font-h);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.header-right .big{font-family:var(--font-h);font-size:2.2rem;font-weight:800;color:var(--orange);line-height:1;}
+.header-pills{margin-top:1.25rem;display:flex;gap:1.5rem;flex-wrap:wrap;}
+.pill{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--orange);flex-shrink:0;}
 
-/* ── TOP BAR ────────────────────────── */
-.topbar {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(10,10,10,0.95); backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-  padding: 12px 16px 0;
+/* ── NAV ── */
+.phase-nav{background:var(--bg2);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100;}
+.phase-nav-inner{max-width:960px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none;}
+.phase-nav-inner::-webkit-scrollbar{display:none;}
+.pnav-btn{font-family:var(--font-h);font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.75rem 1.25rem;background:transparent;border:none;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s;}
+.pnav-btn:hover{color:var(--text);}
+.pnav-btn.active{color:var(--orange);border-bottom-color:var(--orange);}
+
+/* ── CONTAINER ── */
+.container{max-width:960px;margin:0 auto;padding:2rem 1.5rem;}
+.phase-block{display:none;}
+.phase-block.active{display:block;animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ── PHASE HEADER ── */
+.phase-heading{margin-bottom:1.75rem;}
+.phase-tag{font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:.4rem;}
+.phase-title{font-family:var(--font-h);font-size:clamp(1.8rem,5vw,2.6rem);font-weight:900;letter-spacing:-.01em;color:var(--text);margin-bottom:.5rem;}
+.phase-desc{font-size:13.5px;color:var(--muted);max-width:620px;line-height:1.6;}
+.phase-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px;margin:1.25rem 0 1.75rem;}
+.pstat{background:var(--bg3);border:1px solid var(--line);border-radius:5px;padding:.7rem .9rem;}
+.pstat .k{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:3px;}
+.pstat .v{font-family:var(--font-h);font-size:1.5rem;font-weight:800;color:var(--orange);line-height:1;}
+.pstat .s{font-size:11px;color:var(--dim);margin-top:1px;}
+
+/* ── WEEK ── */
+.week{background:var(--bg3);border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden;}
+.week-header{display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.1rem;cursor:pointer;gap:.75rem;user-select:none;}
+.week-header:hover{background:var(--bg4);}
+.week-left{display:flex;align-items:center;gap:.85rem;}
+.week-num{font-family:var(--font-h);font-size:1.5rem;font-weight:900;color:var(--orange);line-height:1;min-width:2ch;}
+.week-title{font-family:var(--font-h);font-size:1rem;font-weight:700;letter-spacing:.03em;color:var(--text);}
+.week-sub{font-size:12px;color:var(--muted);margin-top:1px;}
+.week-badges{display:flex;gap:5px;flex-wrap:wrap;}
+.badge{display:inline-block;font-family:var(--font-h);font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:2px;}
+.b-blue{background:var(--blue-d);color:#6da0f0;border:1px solid rgba(58,123,213,.3);}
+.b-orange{background:var(--orange-d);color:#f07048;border:1px solid rgba(232,97,42,.3);}
+.b-green{background:var(--green-d);color:#4ec491;border:1px solid rgba(45,158,107,.3);}
+.b-yellow{background:var(--yellow-d);color:#d4b040;border:1px solid rgba(212,160,23,.3);}
+.b-muted{background:rgba(255,255,255,.04);color:var(--muted);border:1px solid var(--line);}
+.chevron{font-size:14px;color:var(--muted);transition:transform .2s;flex-shrink:0;}
+.week.open .chevron{transform:rotate(180deg);}
+.week-body{display:none;padding:0 1.1rem 1.1rem;}
+.week.open .week-body{display:block;}
+
+/* ── DAY TABLE ── */
+.day-section{margin-bottom:1.1rem;}
+.day-label{font-family:var(--font-h);font-size:.85rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;padding-bottom:.35rem;border-bottom:1px solid var(--line);}
+.day-label span{color:var(--text);}
+.ex-table{width:100%;border-collapse:collapse;}
+.ex-table th{font-family:var(--font-h);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--dim);text-align:left;padding:5px 8px;border-bottom:1px solid var(--line);}
+.ex-table td{font-size:13px;color:var(--muted);padding:6px 8px;border-bottom:1px solid rgba(255,255,255,.03);vertical-align:top;}
+.ex-table tr:last-child td{border-bottom:none;}
+.ex-table td:first-child{color:var(--text);font-weight:500;}
+.ex-table td.val{font-family:var(--font-h);font-size:14px;font-weight:700;color:var(--orange);white-space:nowrap;}
+.ex-note{font-size:12px;color:var(--muted);font-style:italic;}
+.cardio-box{background:var(--bg4);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:4px;padding:.65rem .9rem;font-size:13px;color:#4ec491;line-height:1.55;margin-bottom:.75rem;}
+.cardio-box strong{color:#6ed4a8;font-weight:600;}
+.note-box{background:var(--yellow-d);border:1px solid rgba(212,160,23,.2);border-left:3px solid var(--yellow);border-radius:4px;padding:.65rem .9rem;font-size:12.5px;color:#c8a030;line-height:1.55;margin-top:.75rem;}
+.note-box strong{color:#d4b040;font-weight:600;}
+.section-divider{height:1px;background:var(--line);margin:1rem 0;}
+
+/* ── MACROS BOX ── */
+.macro-row{display:flex;gap:8px;flex-wrap:wrap;margin:.75rem 0;}
+.macro-chip{background:var(--bg4);border:1px solid var(--line);border-radius:4px;padding:.4rem .75rem;text-align:center;}
+.macro-chip .mk{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+.macro-chip .mv{font-family:var(--font-h);font-size:1.2rem;font-weight:800;color:var(--text);}
+
+/* ── FOOTER ── */
+.footer{border-top:1px solid var(--line);padding:1.5rem;text-align:center;font-size:12px;color:var(--dim);margin-top:2rem;}
+.footer span{color:var(--orange);font-weight:600;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:600px){
+  .container{padding:1.25rem .9rem;}
+  .header{padding:1.5rem .9rem 1rem;}
+  .phase-stats{grid-template-columns:repeat(2,1fr);}
+  .ex-table th:nth-child(4),.ex-table td:nth-child(4){display:none;}
+  .week-badges{display:none;}
+  .macro-row{gap:6px;}
 }
-.topbar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.2em; color: var(--phase); }
-.logo span { color: var(--text); font-size: 22px; }
-.topbar-right { margin-left: auto; text-align: right; }
-.topbar-date { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
-.progress-wrap { display: flex; align-items: center; gap: 8px; }
-.progress-bar { flex: 1; height: 3px; background: var(--bg4); border-radius: 2px; overflow: hidden; }
-.progress-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, var(--phase), #e8c98e); transition: width 0.4s ease; }
-.progress-pct { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; color: var(--phase); width: 34px; text-align: right; }
-
-/* ── PHASE TABS ─────────────────────── */
-.phase-scroll { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 12px; padding-left: 2px; scrollbar-width: none; }
-.phase-scroll::-webkit-scrollbar { display: none; }
-.phase-chip {
-  flex-shrink: 0;
-  display: flex; flex-direction: column; align-items: center;
-  background: transparent; border: 1px solid var(--bg4);
-  border-radius: var(--radius); padding: 7px 12px 6px;
-  cursor: pointer; transition: all 0.2s ease;
-  min-width: 72px;
-}
-.phase-chip:hover { border-color: var(--phase); }
-.phase-chip.active { border-color: var(--phase); background: var(--phase-dim); }
-.phase-chip-num { font-family: 'Bebas Neue', sans-serif; font-size: 20px; line-height: 1; }
-.phase-chip-label { font-family: 'Space Mono', monospace; font-size: 8px; font-weight: 400; color: var(--muted); text-transform: uppercase; letter-spacing: 0.15em; margin-top: 2px; }
-.phase-chip.active .phase-chip-label { color: var(--phase); }
-
-/* ── PHASE HEADER ───────────────────── */
-.phase-header { padding: 16px 16px 0; }
-.phase-name {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 28px; line-height: 1; text-transform: uppercase; letter-spacing: 0.05em;
-  color: var(--phase);
-}
-.phase-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-.meta-pill {
-  display: flex; align-items: center; gap: 5px;
-  background: transparent; border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 4px 10px;
-  font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em;
-}
-.meta-pill strong { color: var(--text); }
-.phase-obj { margin-top: 10px; font-size: 12px; color: var(--muted); line-height: 1.6; font-weight: 300; }
-.phase-special-note {
-  margin: 10px 0 0;
-  background: var(--phase-dim); border: 1px solid var(--phase); border-left: 3px solid var(--phase);
-  border-radius: var(--radius-sm); padding: 10px 12px;
-  font-size: 12px; color: var(--text); line-height: 1.5;
-}
-.phase-special-note::before { content: "⚡ "; }
-
-/* ── CARDIO BLOCK (phase header) ─────── */
-.cardio-summary {
-  margin: 12px 16px 0;
-  background: rgba(109,197,109,0.04);
-  border: 1px solid rgba(109,197,109,0.15); border-left: 3px solid #6dc56d;
-  border-radius: var(--radius); padding: 12px 14px;
-  display: flex; gap: 12px; align-items: center;
-}
-.cardio-icon { font-size: 22px; }
-.cardio-info { flex: 1; }
-.cardio-title { font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 0.05em; color: #6dc56d; text-transform: uppercase; }
-.cardio-detail { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 2px; line-height: 1.6; letter-spacing: 0.05em; }
-
-/* ── DAY TABS ───────────────────────── */
-.day-tabs-wrap { padding: 14px 16px 0; }
-.day-scroll { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
-.day-scroll::-webkit-scrollbar { display: none; }
-.day-tab {
-  flex-shrink: 0; display: flex; flex-direction: column; align-items: center;
-  background: transparent; border: 1px solid var(--bg4);
-  border-radius: var(--radius); padding: 6px 10px;
-  cursor: pointer; transition: all 0.2s ease;
-  min-width: 60px; position: relative;
-}
-.day-tab:hover { border-color: var(--phase); }
-.day-tab.active { border-color: var(--phase); background: var(--phase-dim); }
-.day-tab.cardio-day { border-color: rgba(109,197,109,0.2); }
-.day-tab.cardio-day.active { border-color: #6dc56d; background: rgba(109,197,109,0.06); }
-.day-tab-name { font-family: 'Bebas Neue', sans-serif; font-size: 15px; letter-spacing: 0.05em; }
-.day-tab-focus { font-family: 'Space Mono', monospace; font-size: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 56px; }
-.day-tab.active .day-tab-focus { color: var(--phase); }
-.day-tab.completed-day::after {
-  content: "✓"; position: absolute; top: -5px; right: -5px;
-  width: 14px; height: 14px; border-radius: 50%;
-  background: #6dc56d; color: var(--bg);
-  font-size: 8px; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-}
-
-/* ── DAY CONTENT ────────────────────── */
-.day-content { padding: 14px 16px 120px; }
-
-.day-header { margin-bottom: 14px; }
-.day-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1; }
-.day-sub { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: 0.15em; text-transform: uppercase; }
-.day-rest { display: inline-flex; align-items: center; gap: 5px; margin-top: 8px; background: transparent; border: 1px solid var(--border); border-radius: var(--radius); padding: 3px 10px; font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; }
-.day-rest strong { color: var(--text); }
-
-.day-actions { display: flex; gap: 8px; margin-bottom: 14px; }
-.btn-reset { flex: 1; background: transparent; border: 1px solid var(--bg4); border-radius: var(--radius); padding: 9px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--muted); cursor: pointer; transition: all 0.2s; }
-.btn-reset:hover { border-color: var(--red); color: var(--red); }
-.btn-reset:active { background: var(--bg4); }
-.btn-mark-all { flex: 1; background: var(--phase); border: 1px solid var(--phase); border-radius: var(--radius); padding: 9px; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--bg); cursor: pointer; font-weight: 700; transition: all 0.2s; }
-.btn-mark-all:hover { background: var(--text); border-color: var(--text); }
-.btn-mark-all:active { opacity: 0.7; }
-
-/* ── CARDIO ONLY DAY ────────────────── */
-.cardio-day-card {
-  background: rgba(109,197,109,0.04);
-  border: 1px solid rgba(109,197,109,0.15);
-  border-radius: var(--radius); padding: 24px 20px;
-  text-align: center;
-}
-.cardio-day-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.5; }
-.cardio-day-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #6dc56d; letter-spacing: 0.1em; }
-.cardio-day-detail { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.7; }
-.cardio-day-detail strong { color: var(--text); }
-.cardio-warning { margin-top: 16px; background: rgba(200,169,110,0.06); border: 1px solid rgba(200,169,110,0.2); border-left: 3px solid var(--phase); border-radius: var(--radius); padding: 10px 12px; font-family: 'Space Mono', monospace; font-size: 10px; color: var(--phase); letter-spacing: 0.05em; }
-
-/* ── SUPERSET GROUP ─────────────────── */
-.ss-group { position: relative; margin-bottom: 8px; }
-.ss-group-bar { position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; background: var(--phase); border-radius: 2px; opacity: 0.5; }
-.ss-group-label { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; font-size: 8px; font-weight: 700; color: var(--phase); text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
-.ss-group > .exercise-card { margin-left: 20px; }
-
-/* ── EXERCISE CARD ──────────────────── */
-.exercise-card {
-  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
-  border-radius: var(--radius); padding: 13px 13px 13px 13px;
-  margin-bottom: 6px; display: flex; align-items: flex-start; gap: 12px;
-  transition: all 0.2s ease; position: relative; overflow: hidden;
-}
-.exercise-card:hover { background: rgba(255,255,255,0.04); }
-.exercise-card.done { opacity: 0.4; background: rgba(109,197,109,0.04); border-color: rgba(109,197,109,0.12); }
-.exercise-card.done .ex-name { text-decoration: line-through; color: var(--muted); }
-.exercise-card.warning-card { border-color: rgba(200,169,110,0.25); background: rgba(200,169,110,0.04); }
-
-/* checkbox */
-.ex-check {
-  width: 24px; height: 24px; flex-shrink: 0; border-radius: var(--radius);
-  border: 2px solid rgba(200,169,110,0.25); background: transparent;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: all 0.2s ease; margin-top: 1px;
-  position: relative;
-}
-.ex-check.checked { background: #6dc56d; border-color: #6dc56d; }
-.ex-check.checked::after { content: "✓"; color: var(--bg); font-size: 12px; font-weight: 800; }
-.exercise-card:active .ex-check { transform: scale(0.92); }
-
-.ex-body { flex: 1; min-width: 0; }
-.ex-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
-.ex-name { font-size: 13px; font-weight: 500; line-height: 1.3; color: var(--text); }
-.ex-sets-reps { flex-shrink: 0; text-align: right; }
-.ex-sets { font-family: 'Bebas Neue', sans-serif; font-size: 20px; line-height: 1; color: var(--phase); }
-.ex-reps { font-family: 'Space Mono', monospace; font-size: 9px; color: var(--muted); margin-top: 2px; letter-spacing: 0.1em; }
-
-.ex-badges { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
-.badge {
-  display: inline-flex; align-items: center; gap: 3px;
-  border-radius: var(--radius); padding: 2px 7px; font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.1em;
-}
-.badge-rpe { background: rgba(255,255,255,0.04); color: var(--muted); border: 1px solid rgba(255,255,255,0.06); }
-.badge-ss { background: rgba(200,169,110,0.1); color: var(--phase); border: 1px solid rgba(200,169,110,0.2); }
-.badge-ds { background: rgba(138,180,248,0.08); color: #8ab4f8; border: 1px solid rgba(138,180,248,0.15); }
-.badge-knee { background: rgba(200,169,110,0.08); color: var(--phase); border: 1px solid rgba(200,169,110,0.15); }
-.badge-warn { background: rgba(194,59,42,0.1); color: var(--red); border: 1px solid rgba(194,59,42,0.2); }
-
-.ex-notes { margin-top: 5px; font-size: 11px; color: var(--muted); line-height: 1.5; font-style: italic; }
-.ex-notes.warning-note { color: var(--red); font-style: normal; }
-
-/* ── TIMER FAB ──────────────────────── */
-.timer-fab {
-  position: fixed; bottom: 24px; right: 16px;
-  width: 56px; height: 56px; border-radius: var(--radius);
-  background: var(--phase); border: none;
-  cursor: pointer; z-index: 200;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  box-shadow: 0 4px 20px rgba(200,169,110,0.3);
-  transition: all 0.2s; font-family: 'DM Sans', sans-serif;
-}
-.timer-fab:active { transform: scale(0.92); }
-.timer-fab.running { animation: pulse-ring 1.5s infinite; }
-@keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(200,169,110,0.4); }
-  70% { box-shadow: 0 0 0 14px rgba(200,169,110,0); }
-  100% { box-shadow: 0 0 0 0 rgba(200,169,110,0); }
-}
-.timer-fab-icon { font-size: 20px; }
-.timer-fab-time { font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700; color: var(--bg); margin-top: -2px; }
-
-/* ── TIMER OVERLAY ──────────────────── */
-.timer-overlay {
-  position: fixed; inset: 0; z-index: 300;
-  background: rgba(10,10,10,0.97); backdrop-filter: blur(20px);
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 32px 24px;
-  opacity: 0; pointer-events: none; transition: opacity 0.2s;
-}
-.timer-overlay.open { opacity: 1; pointer-events: all; }
-
-.timer-close { position: absolute; top: 20px; right: 20px; background: transparent; border: 1px solid var(--border); border-radius: var(--radius); width: 36px; height: 36px; cursor: pointer; font-size: 18px; color: var(--muted); display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-.timer-close:hover { border-color: var(--phase); color: var(--phase); }
-
-.timer-ring-wrap { position: relative; width: 200px; height: 200px; margin-bottom: 32px; }
-.timer-ring-svg { transform: rotate(-90deg); }
-.timer-ring-bg { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 8; }
-.timer-ring-prog { fill: none; stroke: var(--phase); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.5s linear; }
-.timer-ring-text {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-}
-.timer-digits { font-family: 'Bebas Neue', sans-serif; font-size: 68px; line-height: 1; letter-spacing: 0.02em; }
-.timer-label-sm { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.2em; }
-
-.timer-presets { display: flex; gap: 6px; margin-bottom: 28px; }
-.timer-preset {
-  flex: 1; padding: 10px 0; background: transparent; border: 1px solid var(--bg4);
-  border-radius: var(--radius); color: var(--text); font-family: 'Space Mono', monospace;
-  font-size: 11px; font-weight: 400; cursor: pointer; transition: all 0.2s; text-align: center; letter-spacing: 0.1em;
-}
-.timer-preset:hover { border-color: var(--phase); }
-.timer-preset.active { border-color: var(--phase); background: var(--phase-dim); color: var(--phase); }
-.timer-preset:active { opacity: 0.7; }
-
-.timer-controls { display: flex; gap: 12px; width: 100%; max-width: 260px; }
-.btn-timer-start {
-  flex: 1; padding: 16px; background: var(--phase); border: none;
-  border-radius: var(--radius); font-family: 'Bebas Neue', sans-serif;
-  font-size: 20px; letter-spacing: 0.15em;
-  color: var(--bg); cursor: pointer; transition: all 0.2s;
-}
-.btn-timer-start:hover { background: var(--text); }
-.btn-timer-start:active { opacity: 0.8; }
-.btn-timer-reset {
-  width: 54px; padding: 16px; background: transparent; border: 1px solid var(--bg4);
-  border-radius: var(--radius); font-size: 18px; cursor: pointer; transition: all 0.2s; color: var(--muted);
-}
-.btn-timer-reset:hover { border-color: var(--phase); }
-.btn-timer-reset:active { background: var(--bg4); }
-
-/* ── DONE BANNER ─────────────────────── */
-.done-banner {
-  background: rgba(109,197,109,0.08);
-  border: 1px solid rgba(109,197,109,0.2);
-  border-radius: var(--radius); padding: 16px; margin-bottom: 16px;
-  text-align: center; display: none;
-}
-.done-banner.show { display: block; }
-.done-banner-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #6dc56d; letter-spacing: 0.1em; }
-.done-banner-sub { font-family: 'Space Mono', monospace; font-size: 10px; color: var(--muted); margin-top: 4px; letter-spacing: 0.15em; }
-
-/* ── SECTION DIVIDER ─────────────────── */
-.section-div { display: flex; align-items: center; gap: 8px; margin: 16px 0 10px; }
-.section-div-line { flex: 1; height: 1px; background: var(--border); }
-.section-div-label { font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 400; color: var(--muted2); text-transform: uppercase; letter-spacing: 0.2em; }
-
-/* ── LEGEND ──────────────────────────── */
-.legend { margin-top: 20px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
-.legend-title { font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 400; color: var(--phase); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 8px; }
-.legend-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
-.legend-row:last-child { margin-bottom: 0; }
-.legend-row span { font-size: 10px; color: var(--muted); }
-
-/* ── TRANSITIONS ─────────────────────── */
-.fade-in { animation: fadeIn 0.2s ease; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
-/* scrollbar */
-::-webkit-scrollbar { width: 4px; height: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 2px; }
 </style>
 </head>
 <body>
-<div id="app">
-  <!-- TOP BAR -->
-  <div class="topbar">
-    <div class="topbar-row">
-      <div class="logo">NL<span>·PLAN</span></div>
-      <div class="topbar-right">
-        <div class="topbar-date" id="topbar-date"></div>
-        <div class="progress-wrap" style="margin-top:4px">
-          <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
-          <div class="progress-pct" id="prog-pct">0%</div>
-        </div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-top">
+      <div class="brand">NL<span>·</span><br>12 SEMANAS</div>
+      <div class="header-right">
+        <div class="tag">Plan completo</div>
+        <div class="big">90 kg</div>
+        <div class="tag" style="margin-top:4px;">5 días · Avanzado</div>
       </div>
     </div>
-    <div class="phase-scroll" id="phase-tabs"></div>
-  </div>
-
-  <!-- PHASE HEADER -->
-  <div id="phase-header"></div>
-
-  <!-- DAY TABS -->
-  <div class="day-tabs-wrap">
-    <div class="day-scroll" id="day-tabs"></div>
-  </div>
-
-  <!-- DAY CONTENT -->
-  <div class="day-content fade-in" id="day-content"></div>
-</div>
-
-<!-- TIMER FAB -->
-<button class="timer-fab" id="timer-fab" onclick="openTimer()">
-  <div class="timer-fab-icon">⏱</div>
-  <div class="timer-fab-time" id="fab-time"></div>
-</button>
-
-<!-- TIMER OVERLAY -->
-<div class="timer-overlay" id="timer-overlay">
-  <button class="timer-close" onclick="closeTimer()">✕</button>
-  <div class="timer-ring-wrap">
-    <svg class="timer-ring-svg" width="200" height="200" viewBox="0 0 200 200">
-      <circle class="timer-ring-bg" cx="100" cy="100" r="88"/>
-      <circle class="timer-ring-prog" id="ring" cx="100" cy="100" r="88" stroke-dasharray="553" stroke-dashoffset="0"/>
-    </svg>
-    <div class="timer-ring-text">
-      <div class="timer-digits" id="timer-display">60</div>
-      <div class="timer-label-sm" id="timer-status">LISTO</div>
+    <div class="header-pills">
+      <div class="pill">3 fases progresivas</div>
+      <div class="pill">Pesos estimados por ejercicio</div>
+      <div class="pill">Cardio semana a semana</div>
+      <div class="pill">Rodilla-safe</div>
     </div>
   </div>
-  <div class="timer-presets">
-    <button class="timer-preset" onclick="setPreset(45)">45s</button>
-    <button class="timer-preset active" onclick="setPreset(60)">60s</button>
-    <button class="timer-preset" onclick="setPreset(90)">90s</button>
-    <button class="timer-preset" onclick="setPreset(120)">2min</button>
-    <button class="timer-preset" onclick="setPreset(180)">3min</button>
+</header>
+
+<nav class="phase-nav">
+  <div class="phase-nav-inner">
+    <button class="pnav-btn active" onclick="showPhase('f1',this)">Fase 1 · Sem 1–4</button>
+    <button class="pnav-btn" onclick="showPhase('f2',this)">Fase 2 · Sem 5–8</button>
+    <button class="pnav-btn" onclick="showPhase('f3',this)">Fase 3 · Sem 9–12</button>
+    <button class="pnav-btn" onclick="showPhase('ref',this)">Referencia rápida</button>
   </div>
-  <div class="timer-controls">
-    <button class="btn-timer-start" id="btn-start" onclick="toggleTimer()">INICIAR</button>
-    <button class="btn-timer-reset" onclick="resetTimer()">↺</button>
+</nav>
+
+<div class="container">
+
+<!-- ══════════════════════════════════════════
+     FASE 1 — ADAPTACIÓN (Sem 1–4)
+     Déficit: –300 kcal (~2700 kcal/día a 90kg)
+     Proteína: ~200g/día
+     Cardio: 3 ses LISS, sin HIIT
+     Pesos: conservadores, aprender movimiento
+═══════════════════════════════════════════ -->
+<div id="f1" class="phase-block active">
+  <div class="phase-heading">
+    <div class="phase-tag">Fase 1 · Semanas 1–4</div>
+    <div class="phase-title">Adaptación</div>
+    <div class="phase-desc">Establecer pesos de trabajo, aprender la técnica de cada ejercicio y activar el déficit calórico de forma gradual. Sin HIIT todavía — dejar que el cuerpo se adapte.</div>
   </div>
-</div>
+  <div class="phase-stats">
+    <div class="pstat"><div class="k">Calorías/día</div><div class="v">2700</div><div class="s">aprox. –300 del mantenimiento</div></div>
+    <div class="pstat"><div class="k">Proteína</div><div class="v">200g</div><div class="s">2.2 g/kg · prioridad absoluta</div></div>
+    <div class="pstat"><div class="k">Cardio</div><div class="v">3 ses</div><div class="s">solo LISS · sin HIIT</div></div>
+    <div class="pstat"><div class="k">RIR objetivo</div><div class="v">2–3</div><div class="s">no al fallo · aprender pesos</div></div>
+    <div class="pstat"><div class="k">Duración sesión</div><div class="v">55 min</div><div class="s">pesas. Cardio por separado.</div></div>
+  </div>
+
+  <!-- SEM 1 -->
+  <div class="week" id="w1">
+    <div class="week-header" onclick="toggleWeek('w1')">
+      <div class="week-left">
+        <div class="week-num">01</div>
+        <div><div class="week-title">Semana 1 — Base</div><div class="week-sub">Establecer pesos de referencia. Técnica ante todo.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-muted">RIR 3</span><span class="badge b-blue">3×8</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 1:</strong> Mié + Sáb — 40 min caminata inclinada (10% / 5 km/h). Pulso objetivo 110–125 ppm.</div>
+
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press inclinado barra</td><td class="val">3×8</td><td class="val">60 kg</td><td>90s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">3×10</td><td class="val">22 kg c/u</td><td>90s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">3×12</td><td class="val">10 kg c/lado</td><td>60s</td></tr>
+            <tr><td>Fondos en paralelas</td><td class="val">3×8</td><td class="val">Peso corporal</td><td>90s</td></tr>
+            <tr><td>Press cuerda (tríceps)</td><td class="val">3×12</td><td class="val">25 kg</td><td>60s</td></tr>
+            <tr><td>Extensión overhead mancuerna</td><td class="val">3×10</td><td class="val">18 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas (peso corporal)</td><td class="val">3×6</td><td class="val">PC / asistida</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">3×8</td><td class="val">70 kg</td><td>90s</td></tr>
+            <tr><td>Remo sentado cable</td><td class="val">3×10</td><td class="val">55 kg</td><td>90s</td></tr>
+            <tr><td>Jalón al pecho agarre cerrado</td><td class="val">3×12</td><td class="val">60 kg</td><td>60s</td></tr>
+            <tr><td>Curl barra Z</td><td class="val">3×10</td><td class="val">35 kg</td><td>60s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×10</td><td class="val">14 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas sentado</td><td class="val">3×8</td><td class="val">20 kg c/u</td><td>90s</td></tr>
+            <tr><td>Elevaciones laterales</td><td class="val">3×15</td><td class="val">10 kg c/u</td><td>60s</td></tr>
+            <tr><td>Face pull cable</td><td class="val">3×15</td><td class="val">20 kg</td><td>60s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">3×12</td><td class="val">28 kg c/u</td><td>60s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×10</td><td class="val">10 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45° — rango controlado</td><td class="val">3×10</td><td class="val">120 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">3×12</td><td class="val">45 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">3×12</td><td class="val">40 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">3×10</td><td class="val">80 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×15</td><td class="val">50 kg</td><td>60s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">3×15</td><td class="val">50 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+        <div class="note-box"><strong>Rodilla:</strong> En la prensa, no pasar los 90° de flexión. Si hay molestia, reducir recorrido. Extensiones: movimiento controlado, sin bloquear la rodilla arriba.</div>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">SÁB — <span>Core + Cardio LISS</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Plancha frontal</td><td class="val">3×45s</td><td class="val">—</td><td>45s</td></tr>
+            <tr><td>Crunch bicicleta</td><td class="val">3×20</td><td class="val">—</td><td>45s</td></tr>
+            <tr><td>Rueda abdominal</td><td class="val">3×8</td><td class="val">—</td><td>60s</td></tr>
+            <tr><td>Russian twist con disco</td><td class="val">3×16</td><td class="val">10 kg</td><td>45s</td></tr>
+          </tbody>
+        </table>
+        <div class="cardio-box" style="margin-top:.75rem;"><strong>Post-core:</strong> 40 min caminata inclinada 10% / 5 km/h.</div>
+      </div>
+
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías</div><div class="mv">~2700</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">200g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos</div><div class="mv">270g</div></div>
+        <div class="macro-chip"><div class="mk">Grasas</div><div class="mv">75g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 2 -->
+  <div class="week" id="w2">
+    <div class="week-header" onclick="toggleWeek('w2')">
+      <div class="week-left">
+        <div class="week-num">02</div>
+        <div><div class="week-title">Semana 2 — Consolidación</div><div class="week-sub">+1 rep en ejercicios principales. Cardio: subir inclinación a 12%.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-muted">RIR 2–3</span><span class="badge b-blue">3×9–10</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 2:</strong> Mié + Sáb + Dom opcional — 40 min caminata inclinada (12% / 5 km/h). Subir inclinación respecto sem 1.</div>
+
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press inclinado barra</td><td class="val">3×10</td><td class="val">60 kg</td><td>90s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">3×10</td><td class="val">24 kg c/u</td><td>90s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">3×12</td><td class="val">11 kg c/lado</td><td>60s</td></tr>
+            <tr><td>Fondos en paralelas</td><td class="val">3×10</td><td class="val">Peso corporal</td><td>90s</td></tr>
+            <tr><td>Press cuerda (tríceps)</td><td class="val">3×12</td><td class="val">27 kg</td><td>60s</td></tr>
+            <tr><td>Extensión overhead mancuerna</td><td class="val">3×10</td><td class="val">20 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas</td><td class="val">3×7</td><td class="val">PC</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">3×10</td><td class="val">72.5 kg</td><td>90s</td></tr>
+            <tr><td>Remo sentado cable</td><td class="val">3×12</td><td class="val">57 kg</td><td>90s</td></tr>
+            <tr><td>Jalón al pecho agarre cerrado</td><td class="val">3×12</td><td class="val">62.5 kg</td><td>60s</td></tr>
+            <tr><td>Curl barra Z</td><td class="val">3×10</td><td class="val">37.5 kg</td><td>60s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×10</td><td class="val">15 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas sentado</td><td class="val">3×10</td><td class="val">20 kg c/u</td><td>90s</td></tr>
+            <tr><td>Elevaciones laterales</td><td class="val">3×15</td><td class="val">10 kg c/u</td><td>60s</td></tr>
+            <tr><td>Face pull cable</td><td class="val">3×15</td><td class="val">22 kg</td><td>60s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">3×12</td><td class="val">30 kg c/u</td><td>60s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×10</td><td class="val">10 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">4×10</td><td class="val">130 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">3×12</td><td class="val">47 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">3×12</td><td class="val">42 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">3×10</td><td class="val">85 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×15</td><td class="val">52 kg</td><td>60s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">3×15</td><td class="val">52 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">SÁB — <span>Core + Cardio LISS</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Plancha frontal</td><td class="val">3×50s</td><td class="val">—</td><td>45s</td></tr>
+            <tr><td>Crunch bicicleta</td><td class="val">3×20</td><td class="val">—</td><td>45s</td></tr>
+            <tr><td>Rueda abdominal</td><td class="val">3×10</td><td class="val">—</td><td>60s</td></tr>
+            <tr><td>Russian twist con disco</td><td class="val">3×16</td><td class="val">10 kg</td><td>45s</td></tr>
+          </tbody>
+        </table>
+        <div class="cardio-box" style="margin-top:.75rem;"><strong>Post-core:</strong> 40 min caminata 12% / 5.5 km/h.</div>
+      </div>
+
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías</div><div class="mv">~2700</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">200g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos</div><div class="mv">270g</div></div>
+        <div class="macro-chip"><div class="mk">Grasas</div><div class="mv">75g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 3 -->
+  <div class="week" id="w3">
+    <div class="week-header" onclick="toggleWeek('w3')">
+      <div class="week-left">
+        <div class="week-num">03</div>
+        <div><div class="week-title">Semana 3 — Carga progresiva</div><div class="week-sub">Subir peso donde llegaste al tope de reps. Agregar 3ra sesión cardio.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-muted">RIR 2</span><span class="badge b-blue">3×10–12</span><span class="badge b-green">3 LISS</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 3:</strong> Mié + Sáb + Dom — 42 min caminata (12% / 5.5 km/h). Tres sesiones semanales desde ahora.</div>
+
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press inclinado barra</td><td class="val">4×8</td><td class="val">65 kg</td><td>90s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">3×12</td><td class="val">24 kg c/u</td><td>90s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">3×15</td><td class="val">11 kg c/lado</td><td>60s</td></tr>
+            <tr><td>Fondos lastrados (+5 kg)</td><td class="val">3×8</td><td class="val">+5 kg</td><td>90s</td></tr>
+            <tr><td>Press cuerda (tríceps)</td><td class="val">3×15</td><td class="val">27 kg</td><td>60s</td></tr>
+            <tr><td>Extensión overhead mancuerna</td><td class="val">3×12</td><td class="val">20 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas (+2.5 kg lastre)</td><td class="val">3×6</td><td class="val">+2.5 kg</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">4×8</td><td class="val">75 kg</td><td>90s</td></tr>
+            <tr><td>Remo sentado cable</td><td class="val">3×12</td><td class="val">60 kg</td><td>90s</td></tr>
+            <tr><td>Jalón al pecho agarre cerrado</td><td class="val">3×12</td><td class="val">65 kg</td><td>60s</td></tr>
+            <tr><td>Curl barra Z</td><td class="val">3×12</td><td class="val">37.5 kg</td><td>60s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×12</td><td class="val">15 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas sentado</td><td class="val">4×8</td><td class="val">22 kg c/u</td><td>90s</td></tr>
+            <tr><td>Elevaciones laterales</td><td class="val">4×15</td><td class="val">10 kg c/u</td><td>60s</td></tr>
+            <tr><td>Face pull cable</td><td class="val">3×15</td><td class="val">24 kg</td><td>60s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">3×15</td><td class="val">30 kg c/u</td><td>60s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×12</td><td class="val">10 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">4×10</td><td class="val">140 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">4×12</td><td class="val">50 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">4×12</td><td class="val">45 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">4×10</td><td class="val">90 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×15</td><td class="val">55 kg</td><td>60s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">4×15</td><td class="val">55 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">SÁB — <span>Core + Cardio LISS</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Plancha frontal</td><td class="val">3×55s</td><td class="val">—</td><td>45s</td></tr>
+            <tr><td>Crunch bicicleta</td><td class="val">3×25</td><td class="val">—</td><td>45s</td></tr>
+            <tr><td>Rueda abdominal</td><td class="val">3×10</td><td class="val">—</td><td>60s</td></tr>
+            <tr><td>Russian twist con disco</td><td class="val">3×20</td><td class="val">10 kg</td><td>45s</td></tr>
+          </tbody>
+        </table>
+        <div class="cardio-box" style="margin-top:.75rem;"><strong>Post-core + Dom:</strong> 42 min caminata 12% / 5.5 km/h.</div>
+      </div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías</div><div class="mv">~2700</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">200g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos</div><div class="mv">270g</div></div>
+        <div class="macro-chip"><div class="mk">Grasas</div><div class="mv">75g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 4 — DELOAD -->
+  <div class="week" id="w4">
+    <div class="week-header" onclick="toggleWeek('w4')">
+      <div class="week-left">
+        <div class="week-num">04</div>
+        <div><div class="week-title">Semana 4 — Deload</div><div class="week-sub">Reducir volumen 40%. Recuperar tendones. Preparar fase 2.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-yellow">Deload</span><span class="badge b-muted">–40% vol</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="note-box"><strong>Semana de descarga:</strong> Mismos ejercicios, mismos pesos, pero solo 2 series por ejercicio en lugar de 3–4. Sin llegar al fallo. El objetivo es recuperar sin perder adaptación.</div>
+      <div class="cardio-box" style="margin-top:.75rem;"><strong>Cardio semana 4:</strong> Solo 2 sesiones LISS de 35 min. Sin cardio sábado.</div>
+
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps (deload)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>Press inclinado barra</td><td class="val">2×8</td><td class="val">65 kg</td><td class="ex-note">RIR 4, sin forzar</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">2×10</td><td class="val">24 kg c/u</td><td></td></tr>
+            <tr><td>Aperturas cable</td><td class="val">2×12</td><td class="val">11 kg</td><td></td></tr>
+            <tr><td>Press cuerda tríceps</td><td class="val">2×12</td><td class="val">27 kg</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps (deload)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas</td><td class="val">2×5</td><td class="val">PC</td><td class="ex-note">Cómodo</td></tr>
+            <tr><td>Remo barra</td><td class="val">2×8</td><td class="val">72.5 kg</td><td></td></tr>
+            <tr><td>Remo sentado cable</td><td class="val">2×10</td><td class="val">57 kg</td><td></td></tr>
+            <tr><td>Curl barra Z</td><td class="val">2×10</td><td class="val">35 kg</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros (deload)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas</td><td class="val">2×8</td><td class="val">20 kg c/u</td><td class="ex-note">Sin forzar</td></tr>
+            <tr><td>Elevaciones laterales</td><td class="val">2×15</td><td class="val">10 kg</td><td></td></tr>
+            <tr><td>Face pull</td><td class="val">2×15</td><td class="val">22 kg</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (deload)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Notas</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">2×10</td><td class="val">120 kg</td><td class="ex-note">Peso reducido</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">2×12</td><td class="val">40 kg</td><td></td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">2×10</td><td class="val">80 kg</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías</div><div class="mv">~2900</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">200g</div></div>
+        <div class="macro-chip"><div class="mk">Nota</div><div class="mv" style="font-size:1rem;">Recarga</div></div>
+      </div>
+      <div class="note-box"><strong>Recarga nutricional semana 4:</strong> Subir a ~2900 kcal, principalmente de carbohidratos. Repone glucógeno, resetea leptina y te deja listo para la Fase 2.</div>
+    </div>
+  </div>
+</div><!-- /fase1 -->
+
+<!-- ══════════════════════════════════════════
+     FASE 2 — INTENSIFICACIÓN (Sem 5–8)
+     Déficit: –350 kcal (~2650 kcal/día)
+     Cardio: 4 ses (LISS + 1 HIIT desde sem 6)
+     Supersets activos
+═══════════════════════════════════════════ -->
+<div id="f2" class="phase-block">
+  <div class="phase-heading">
+    <div class="phase-tag">Fase 2 · Semanas 5–8</div>
+    <div class="phase-title">Intensificación</div>
+    <div class="phase-desc">Supersets antagonistas, déficit más alto, introducción del HIIT en bici. Acá es donde empezás a ver los cambios visibles. Más cardio, más intensidad, misma protección de masa muscular.</div>
+  </div>
+  <div class="phase-stats">
+    <div class="pstat"><div class="k">Calorías/día</div><div class="v">2650</div><div class="s">aprox. –350 del mantenimiento</div></div>
+    <div class="pstat"><div class="k">Proteína</div><div class="v">200g</div><div class="s">mantener siempre igual</div></div>
+    <div class="pstat"><div class="k">Cardio</div><div class="v">4 ses</div><div class="s">3 LISS + 1 HIIT (desde sem 6)</div></div>
+    <div class="pstat"><div class="k">RIR objetivo</div><div class="v">1–2</div><div class="s">más cerca del fallo</div></div>
+    <div class="pstat"><div class="k">Supersets</div><div class="v">Sí</div><div class="s">pecho/espalda · bíc/tríceps</div></div>
+  </div>
+
+  <!-- SEM 5 -->
+  <div class="week" id="w5">
+    <div class="week-header" onclick="toggleWeek('w5')">
+      <div class="week-left">
+        <div class="week-num">05</div>
+        <div><div class="week-title">Semana 5 — Arranque fase 2</div><div class="week-sub">Introducir supersets. Subir pesos post-deload. 4 sesiones cardio.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-orange">Supersets</span><span class="badge b-green">4 LISS</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 5:</strong> Mié + Vie (post-piernas, 30 min) + Sáb + Dom — 43 min LISS (12% / 5.5 km/h). Sin HIIT todavía.</div>
+      <div class="note-box" style="margin-bottom:.75rem;"><strong>Supersets esta semana:</strong> En Lunes: A1 Press inclinado → A2 Remo cable (descanso después del A2). En Martes: A1 Jalón → A2 Press cuerda. Reducir descanso a 70s entre supersets.</div>
+
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps (supersets)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>A1 Press inclinado barra</td><td class="val">4×8</td><td class="val">67.5 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Remo cable sentado (back)</td><td class="val">4×10</td><td class="val">57 kg</td><td>70s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">3×12</td><td class="val">26 kg c/u</td><td>80s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">3×15</td><td class="val">12 kg c/lado</td><td>60s</td></tr>
+            <tr><td>B1 Fondos lastrados</td><td class="val">3×10</td><td class="val">+7.5 kg</td><td>—→B2</td></tr>
+            <tr><td>B2 Curl barra Z</td><td class="val">3×10</td><td class="val">37.5 kg</td><td>70s</td></tr>
+            <tr><td>Press cuerda tríceps</td><td class="val">3×15</td><td class="val">29 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas lastre</td><td class="val">4×6</td><td class="val">+5 kg</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">4×8</td><td class="val">77.5 kg</td><td>90s</td></tr>
+            <tr><td>A1 Jalón agarre cerrado</td><td class="val">3×12</td><td class="val">67.5 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Extensión cuerda tríceps</td><td class="val">3×12</td><td class="val">27 kg</td><td>70s</td></tr>
+            <tr><td>Curl martillo</td><td class="val">3×12</td><td class="val">16 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas sentado</td><td class="val">4×8</td><td class="val">22 kg c/u</td><td>90s</td></tr>
+            <tr><td>A1 Elevaciones laterales</td><td class="val">4×15</td><td class="val">11 kg c/u</td><td>—→A2</td></tr>
+            <tr><td>A2 Face pull cable</td><td class="val">4×15</td><td class="val">24 kg</td><td>60s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">3×15</td><td class="val">32 kg c/u</td><td>60s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×12</td><td class="val">11 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas + Cardio suave (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">4×10</td><td class="val">145 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">4×12</td><td class="val">52 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">4×12</td><td class="val">47 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">4×10</td><td class="val">95 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×15</td><td class="val">57 kg</td><td>60s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">4×15</td><td class="val">57 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+        <div class="cardio-box" style="margin-top:.75rem;"><strong>Post-piernas:</strong> 30 min caminata plana 5 km/h (activa sin sobrecargar).</div>
+      </div>
+
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías</div><div class="mv">~2650</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">200g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos</div><div class="mv">255g</div></div>
+        <div class="macro-chip"><div class="mk">Grasas</div><div class="mv">72g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 6 -->
+  <div class="week" id="w6">
+    <div class="week-header" onclick="toggleWeek('w6')">
+      <div class="week-left">
+        <div class="week-num">06</div>
+        <div><div class="week-title">Semana 6 — Introducción HIIT</div><div class="week-sub">Primera sesión HIIT en bici. Mantener pesos o subir 1 escalón.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-orange">HIIT x1</span><span class="badge b-green">4 ses</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 6:</strong> Mié 43 min LISS · Sáb: <strong>20 min HIIT bici</strong> (30s máx / 90s suave, 8 rondas) + 15 min LISS · Dom 43 min LISS.</div>
+      <div class="note-box" style="margin-bottom:.75rem;"><strong>HIIT protocolo:</strong> Bike estática. 5 min calentamiento → 8 × (30s sprint máximo / 90s pedaleo suave) → 5 min vuelta calma. Total ~25 min. FC pico en sprints: 85–92% FCmax (~157–170 ppm a 90 kg).</div>
+
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>A1 Press inclinado barra</td><td class="val">4×8</td><td class="val">70 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Remo cable sentado</td><td class="val">4×10</td><td class="val">60 kg</td><td>70s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">3×12</td><td class="val">26 kg c/u</td><td>80s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">3×15</td><td class="val">12 kg c/lado</td><td>60s</td></tr>
+            <tr><td>B1 Fondos lastrados</td><td class="val">3×10</td><td class="val">+10 kg</td><td>—→B2</td></tr>
+            <tr><td>B2 Curl barra Z</td><td class="val">3×10</td><td class="val">40 kg</td><td>70s</td></tr>
+            <tr><td>Press cuerda tríceps</td><td class="val">3×15</td><td class="val">29 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas lastre</td><td class="val">4×7</td><td class="val">+5 kg</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">4×8</td><td class="val">80 kg</td><td>90s</td></tr>
+            <tr><td>A1 Jalón agarre cerrado</td><td class="val">3×12</td><td class="val">70 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Extensión cuerda tríceps</td><td class="val">3×12</td><td class="val">29 kg</td><td>70s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×12</td><td class="val">16 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas</td><td class="val">4×8</td><td class="val">24 kg c/u</td><td>90s</td></tr>
+            <tr><td>A1 Elevaciones laterales</td><td class="val">4×15</td><td class="val">11 kg c/u</td><td>—→A2</td></tr>
+            <tr><td>A2 Face pull cable</td><td class="val">4×15</td><td class="val">24 kg</td><td>60s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">3×15</td><td class="val">32 kg c/u</td><td>60s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×12</td><td class="val">11 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">4×10</td><td class="val">150 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">4×12</td><td class="val">55 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">4×12</td><td class="val">50 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">4×10</td><td class="val">100 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×15</td><td class="val">60 kg</td><td>60s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">4×15</td><td class="val">60 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías</div><div class="mv">~2650</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">200g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos</div><div class="mv">255g</div></div>
+        <div class="macro-chip"><div class="mk">Grasas</div><div class="mv">72g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 7 -->
+  <div class="week" id="w7">
+    <div class="week-header" onclick="toggleWeek('w7')">
+      <div class="week-left">
+        <div class="week-num">07</div>
+        <div><div class="week-title">Semana 7 — Máximo volumen</div><div class="week-sub">Pico de volumen de la fase 2. HIIT a 10 rondas. Subir pesos donde el cuerpo lo permita.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-orange">HIIT ×10</span><span class="badge b-blue">Vol. alto</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 7:</strong> Mié 45 min LISS · Sáb: 20 min HIIT bici (10 rondas) + 15 min LISS · Dom 45 min LISS.</div>
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>A1 Press inclinado barra</td><td class="val">4×8</td><td class="val">72.5 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Remo cable sentado</td><td class="val">4×10</td><td class="val">62 kg</td><td>70s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">4×12</td><td class="val">28 kg c/u</td><td>80s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">3×15</td><td class="val">13 kg c/lado</td><td>60s</td></tr>
+            <tr><td>B1 Fondos lastrados</td><td class="val">3×10</td><td class="val">+10 kg</td><td>—→B2</td></tr>
+            <tr><td>B2 Curl barra Z</td><td class="val">3×10</td><td class="val">40 kg</td><td>70s</td></tr>
+            <tr><td>Press cuerda tríceps</td><td class="val">3×15</td><td class="val">31 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas lastre</td><td class="val">4×7</td><td class="val">+7.5 kg</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">4×10</td><td class="val">80 kg</td><td>90s</td></tr>
+            <tr><td>A1 Jalón agarre cerrado</td><td class="val">4×12</td><td class="val">72.5 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Extensión cuerda tríceps</td><td class="val">4×12</td><td class="val">29 kg</td><td>70s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×12</td><td class="val">17 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas</td><td class="val">4×10</td><td class="val">24 kg c/u</td><td>90s</td></tr>
+            <tr><td>A1 Elevaciones laterales</td><td class="val">4×15</td><td class="val">12 kg c/u</td><td>—→A2</td></tr>
+            <tr><td>A2 Face pull cable</td><td class="val">4×15</td><td class="val">26 kg</td><td>60s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">4×15</td><td class="val">34 kg c/u</td><td>60s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×12</td><td class="val">12 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">4×12</td><td class="val">150 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">4×15</td><td class="val">55 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">4×15</td><td class="val">50 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">4×12</td><td class="val">100 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×20</td><td class="val">60 kg</td><td>60s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">4×15</td><td class="val">62 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías</div><div class="mv">~2650</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">200g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos</div><div class="mv">255g</div></div>
+        <div class="macro-chip"><div class="mk">Grasas</div><div class="mv">72g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 8 — DELOAD -->
+  <div class="week" id="w8">
+    <div class="week-header" onclick="toggleWeek('w8')">
+      <div class="week-left">
+        <div class="week-num">08</div>
+        <div><div class="week-title">Semana 8 — Deload</div><div class="week-sub">Recuperación antes del peaking. Recarga calórica.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-yellow">Deload</span><span class="badge b-muted">–40% vol</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="note-box"><strong>Semana 8 deload:</strong> 2 series por ejercicio. Pesos iguales, sin forzar reps. Cardio: solo 2 sesiones LISS de 35 min. Sin HIIT esta semana.</div>
+      <div class="note-box" style="margin-top:.5rem;"><strong>Recarga nutricional:</strong> Subir a ~2900 kcal durante 2 días (miércoles y sábado). Repone glucógeno muscular y resetea la leptina para el pico final.</div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías</div><div class="mv">~2850</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">200g</div></div>
+        <div class="macro-chip"><div class="mk">Nota</div><div class="mv" style="font-size:1rem;">Recarga</div></div>
+      </div>
+    </div>
+  </div>
+</div><!-- /fase2 -->
+
+<!-- ══════════════════════════════════════════
+     FASE 3 — PEAKING (Sem 9–12)
+     Déficit: –400 kcal (~2600 kcal/día)
+     Cardio: 5 ses (3 LISS + 2 HIIT)
+     Carbociclado, sueño prioritario
+═══════════════════════════════════════════ -->
+<div id="f3" class="phase-block">
+  <div class="phase-heading">
+    <div class="phase-tag">Fase 3 · Semanas 9–12</div>
+    <div class="phase-title">Peaking</div>
+    <div class="phase-desc">Máxima intensidad de cardio, déficit en el límite sostenible, carbociclado activo. El sueño y la recuperación son tan importantes como el entrenamiento. Acá se ven los resultados finales.</div>
+  </div>
+  <div class="phase-stats">
+    <div class="pstat"><div class="k">Calorías/día</div><div class="v">2600</div><div class="s">aprox. –400 del mantenimiento</div></div>
+    <div class="pstat"><div class="k">Proteína</div><div class="v">205g</div><div class="s">subir ligeramente en déficit alto</div></div>
+    <div class="pstat"><div class="k">Cardio</div><div class="v">5 ses</div><div class="s">3 LISS + 2 HIIT</div></div>
+    <div class="pstat"><div class="k">RIR objetivo</div><div class="v">1</div><div class="s">muy cerca del fallo</div></div>
+    <div class="pstat"><div class="k">Sueño</div><div class="v">8h</div><div class="s">no negociable — cortisol bajo</div></div>
+  </div>
+
+  <!-- SEM 9 -->
+  <div class="week" id="w9">
+    <div class="week-header" onclick="toggleWeek('w9')">
+      <div class="week-left">
+        <div class="week-num">09</div>
+        <div><div class="week-title">Semana 9 — Arranque peaking</div><div class="week-sub">2 sesiones HIIT bici. Déficit máximo. Carbociclado activado.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-orange">HIIT ×2</span><span class="badge b-green">5 ses</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 9:</strong> Lun post-pecho 30 min LISS · Mié 45 min LISS · Sáb HIIT bici 20 min + 15 LISS · Dom HIIT bici 20 min + 10 LISS.</div>
+      <div class="note-box" style="margin-bottom:.75rem;"><strong>Carbociclado sem 9–12:</strong> Días de entreno de grupos grandes (piernas, espalda) → +40g carbos respecto al resto. Días de descanso y cardio solo → –30g carbos. Proteína y grasas constantes.</div>
+
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>A1 Press inclinado barra</td><td class="val">4×8</td><td class="val">75 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Remo cable sentado</td><td class="val">4×10</td><td class="val">65 kg</td><td>70s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">4×12</td><td class="val">28 kg c/u</td><td>80s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">3×15</td><td class="val">13 kg c/lado</td><td>60s</td></tr>
+            <tr><td>B1 Fondos lastrados</td><td class="val">3×10</td><td class="val">+12.5 kg</td><td>—→B2</td></tr>
+            <tr><td>B2 Curl barra Z</td><td class="val">3×10</td><td class="val">42.5 kg</td><td>70s</td></tr>
+            <tr><td>Press cuerda tríceps</td><td class="val">3×15</td><td class="val">31 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas lastre</td><td class="val">4×8</td><td class="val">+7.5 kg</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">4×10</td><td class="val">82.5 kg</td><td>90s</td></tr>
+            <tr><td>A1 Jalón agarre cerrado</td><td class="val">4×12</td><td class="val">75 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Extensión cuerda tríceps</td><td class="val">4×12</td><td class="val">31 kg</td><td>70s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×12</td><td class="val">18 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas</td><td class="val">4×10</td><td class="val">24 kg c/u</td><td>90s</td></tr>
+            <tr><td>A1 Elevaciones laterales</td><td class="val">4×15</td><td class="val">12 kg c/u</td><td>—→A2</td></tr>
+            <tr><td>A2 Face pull cable</td><td class="val">4×15</td><td class="val">28 kg</td><td>60s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">4×15</td><td class="val">34 kg c/u</td><td>60s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×12</td><td class="val">12 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">5×10</td><td class="val">155 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">4×15</td><td class="val">57 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">4×15</td><td class="val">52 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">4×12</td><td class="val">105 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×20</td><td class="val">62 kg</td><td>60s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">4×15</td><td class="val">65 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías base</div><div class="mv">~2600</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">205g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos (entreno)</div><div class="mv">260g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos (descanso)</div><div class="mv">190g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 10 -->
+  <div class="week" id="w10">
+    <div class="week-header" onclick="toggleWeek('w10')">
+      <div class="week-left">
+        <div class="week-num">10</div>
+        <div><div class="week-title">Semana 10 — Intensidad sostenida</div><div class="week-sub">Subir resistencia en HIIT. Mantener pesos de pesas.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-orange">HIIT ×2</span><span class="badge b-blue">RIR 1</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 10:</strong> Igual sem 9 + subir resistencia HIIT bici 1 escalón. LISS mantener 12% / 5.5 km/h. Total cardio semanal: ~200 min.</div>
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>A1 Press inclinado barra</td><td class="val">4×8</td><td class="val">77.5 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Remo cable sentado</td><td class="val">4×10</td><td class="val">67 kg</td><td>70s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">4×12</td><td class="val">30 kg c/u</td><td>80s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">3×15</td><td class="val">13 kg c/lado</td><td>60s</td></tr>
+            <tr><td>B1 Fondos lastrados</td><td class="val">3×10</td><td class="val">+12.5 kg</td><td>—→B2</td></tr>
+            <tr><td>B2 Curl barra Z</td><td class="val">3×10</td><td class="val">42.5 kg</td><td>70s</td></tr>
+            <tr><td>Press cuerda tríceps</td><td class="val">3×15</td><td class="val">33 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas lastre</td><td class="val">4×8</td><td class="val">+10 kg</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">4×10</td><td class="val">85 kg</td><td>90s</td></tr>
+            <tr><td>A1 Jalón agarre cerrado</td><td class="val">4×12</td><td class="val">77.5 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Extensión cuerda tríceps</td><td class="val">4×12</td><td class="val">31 kg</td><td>70s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×12</td><td class="val">18 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas</td><td class="val">4×10</td><td class="val">26 kg c/u</td><td>90s</td></tr>
+            <tr><td>A1 Elevaciones laterales</td><td class="val">4×15</td><td class="val">12 kg c/u</td><td>—→A2</td></tr>
+            <tr><td>A2 Face pull cable</td><td class="val">4×15</td><td class="val">28 kg</td><td>60s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">4×15</td><td class="val">36 kg c/u</td><td>60s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×12</td><td class="val">12 kg c/u</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">5×10</td><td class="val">160 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">4×15</td><td class="val">60 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">4×15</td><td class="val">55 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">4×12</td><td class="val">107.5 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×20</td><td class="val">65 kg</td><td>60s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">4×15</td><td class="val">67 kg</td><td>60s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías base</div><div class="mv">~2600</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">205g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos (entreno)</div><div class="mv">260g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos (descanso)</div><div class="mv">190g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 11 -->
+  <div class="week" id="w11">
+    <div class="week-header" onclick="toggleWeek('w11')">
+      <div class="week-left">
+        <div class="week-num">11</div>
+        <div><div class="week-title">Semana 11 — Pico máximo</div><div class="week-sub">Semana más exigente del programa. Máximo cardio, mínimo descanso entre series.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-orange">Pico</span><span class="badge b-blue">RIR 1</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 11:</strong> Misma estructura sem 10. HIIT: extender a 12 rondas si el tendón lo tolera. LISS: 45–48 min.</div>
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>A1 Press inclinado barra</td><td class="val">4×8</td><td class="val">77.5 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Remo cable sentado</td><td class="val">4×10</td><td class="val">67 kg</td><td>65s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">4×12</td><td class="val">30 kg c/u</td><td>75s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">4×15</td><td class="val">14 kg c/lado</td><td>55s</td></tr>
+            <tr><td>B1 Fondos lastrados</td><td class="val">3×12</td><td class="val">+12.5 kg</td><td>—→B2</td></tr>
+            <tr><td>B2 Curl barra Z</td><td class="val">3×10</td><td class="val">42.5 kg</td><td>65s</td></tr>
+            <tr><td>Press cuerda tríceps</td><td class="val">3×15</td><td class="val">33 kg</td><td>55s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas lastre</td><td class="val">4×8</td><td class="val">+10 kg</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">4×10</td><td class="val">85 kg</td><td>85s</td></tr>
+            <tr><td>A1 Jalón agarre cerrado</td><td class="val">4×12</td><td class="val">80 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Extensión cuerda tríceps</td><td class="val">4×12</td><td class="val">33 kg</td><td>65s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×12</td><td class="val">18 kg c/u</td><td>55s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas</td><td class="val">4×10</td><td class="val">26 kg c/u</td><td>85s</td></tr>
+            <tr><td>A1 Elevaciones laterales</td><td class="val">4×15</td><td class="val">13 kg c/u</td><td>—→A2</td></tr>
+            <tr><td>A2 Face pull cable</td><td class="val">4×15</td><td class="val">30 kg</td><td>55s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">4×15</td><td class="val">36 kg c/u</td><td>55s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×12</td><td class="val">13 kg c/u</td><td>55s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe)</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">5×10</td><td class="val">162.5 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">4×15</td><td class="val">60 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">4×15</td><td class="val">57 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">4×12</td><td class="val">110 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×20</td><td class="val">67 kg</td><td>55s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">4×15</td><td class="val">70 kg</td><td>55s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías base</div><div class="mv">~2600</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">205g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos (entreno)</div><div class="mv">260g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos (descanso)</div><div class="mv">185g</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEM 12 — CIERRE -->
+  <div class="week" id="w12">
+    <div class="week-header" onclick="toggleWeek('w12')">
+      <div class="week-left">
+        <div class="week-num">12</div>
+        <div><div class="week-title">Semana 12 — Cierre del ciclo</div><div class="week-sub">Última semana. Misma intensidad. Foto final al terminar.</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="week-badges"><span class="badge b-green">Fin ciclo</span><span class="badge b-orange">HIIT ×2</span></div>
+        <div class="chevron">▾</div>
+      </div>
+    </div>
+    <div class="week-body">
+      <div class="cardio-box"><strong>Cardio semana 12:</strong> Misma estructura semana 11. No cambiar nada esta semana — el cuerpo está adaptado, mantener el estímulo.</div>
+      <div class="note-box" style="margin-bottom:.75rem;"><strong>Después de la semana 12:</strong> Tomarte 1 semana completa de descanso activo (caminatas, stretching). Luego evaluar: si querés continuar definición, repetir Fase 2–3 ajustando pesos. Si querés ganar masa, iniciar ciclo de volumen limpio desde ~mantenimiento calórico.</div>
+      <div class="day-section">
+        <div class="day-label">LUN — <span>Pecho + Tríceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>A1 Press inclinado barra</td><td class="val">4×8</td><td class="val">80 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Remo cable sentado</td><td class="val">4×10</td><td class="val">67 kg</td><td>65s</td></tr>
+            <tr><td>Press plano mancuernas</td><td class="val">4×12</td><td class="val">30 kg c/u</td><td>75s</td></tr>
+            <tr><td>Aperturas cable</td><td class="val">4×15</td><td class="val">14 kg c/lado</td><td>55s</td></tr>
+            <tr><td>B1 Fondos lastrados</td><td class="val">3×12</td><td class="val">+15 kg</td><td>—→B2</td></tr>
+            <tr><td>B2 Curl barra Z</td><td class="val">3×10</td><td class="val">45 kg</td><td>65s</td></tr>
+            <tr><td>Press cuerda tríceps</td><td class="val">3×15</td><td class="val">33 kg</td><td>55s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">MAR — <span>Espalda + Bíceps</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Dominadas lastre</td><td class="val">4×8</td><td class="val">+10 kg</td><td>120s</td></tr>
+            <tr><td>Remo barra pronado</td><td class="val">4×10</td><td class="val">87.5 kg</td><td>85s</td></tr>
+            <tr><td>A1 Jalón agarre cerrado</td><td class="val">4×12</td><td class="val">80 kg</td><td>—→A2</td></tr>
+            <tr><td>A2 Extensión cuerda tríceps</td><td class="val">4×12</td><td class="val">33 kg</td><td>65s</td></tr>
+            <tr><td>Curl martillo mancuerna</td><td class="val">3×12</td><td class="val">18 kg c/u</td><td>55s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">JUE — <span>Hombros + Trapecios</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Press militar mancuernas</td><td class="val">4×10</td><td class="val">26 kg c/u</td><td>85s</td></tr>
+            <tr><td>A1 Elevaciones laterales</td><td class="val">4×15</td><td class="val">13 kg c/u</td><td>—→A2</td></tr>
+            <tr><td>A2 Face pull cable</td><td class="val">4×15</td><td class="val">30 kg</td><td>55s</td></tr>
+            <tr><td>Encogimientos mancuernas</td><td class="val">4×15</td><td class="val">38 kg c/u</td><td>55s</td></tr>
+            <tr><td>Elevaciones frontales alternas</td><td class="val">3×12</td><td class="val">13 kg c/u</td><td>55s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="day-section">
+        <div class="day-label">VIE — <span>Piernas (Knee-safe) — Sesión final</span></div>
+        <table class="ex-table">
+          <thead><tr><th>Ejercicio</th><th>Series×Reps</th><th>Peso est.</th><th>Descanso</th></tr></thead>
+          <tbody>
+            <tr><td>Prensa 45°</td><td class="val">5×10</td><td class="val">165 kg</td><td>120s</td></tr>
+            <tr><td>Extensiones cuádriceps</td><td class="val">4×15</td><td class="val">62 kg</td><td>60s</td></tr>
+            <tr><td>Curl femoral tumbado</td><td class="val">4×15</td><td class="val">57 kg</td><td>60s</td></tr>
+            <tr><td>Hip thrust barra</td><td class="val">4×12</td><td class="val">112.5 kg</td><td>90s</td></tr>
+            <tr><td>Abducción máquina</td><td class="val">3×20</td><td class="val">67 kg</td><td>55s</td></tr>
+            <tr><td>Gemelos sentado</td><td class="val">4×15</td><td class="val">70 kg</td><td>55s</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="macro-row">
+        <div class="macro-chip"><div class="mk">Calorías base</div><div class="mv">~2600</div></div>
+        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">205g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos (entreno)</div><div class="mv">260g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos (descanso)</div><div class="mv">185g</div></div>
+      </div>
+    </div>
+  </div>
+</div><!-- /fase3 -->
+
+<!-- ══════════════════════════════════════════
+     REFERENCIA RÁPIDA
+═══════════════════════════════════════════ -->
+<div id="ref" class="phase-block">
+  <div class="phase-heading">
+    <div class="phase-tag">Resumen ejecutivo</div>
+    <div class="phase-title">Referencia rápida</div>
+    <div class="phase-desc">Todo el plan en una sola vista para consulta rápida en el gimnasio.</div>
+  </div>
+
+  <div class="phase-stats">
+    <div class="pstat"><div class="k">Peso actual</div><div class="v">90 kg</div><div class="s">base de cálculo</div></div>
+    <div class="pstat"><div class="k">Mantenimiento est.</div><div class="v">3000</div><div class="s">kcal/día aprox.</div></div>
+    <div class="pstat"><div class="k">Proteína mínima</div><div class="v">200g</div><div class="s">siempre, sin excepción</div></div>
+    <div class="pstat"><div class="k">HIIT protocolo</div><div class="v">30/90s</div><div class="s">sprints/recuperación bike</div></div>
+  </div>
+
+  <div class="day-section">
+    <div class="day-label"><span>Resumen de fases</span></div>
+    <table class="ex-table">
+      <thead><tr><th>Fase</th><th>Semanas</th><th>Calorías</th><th>Cardio/sem</th><th>HIIT</th><th>Supersets</th></tr></thead>
+      <tbody>
+        <tr><td>Adaptación</td><td class="val">1–4</td><td>2700 kcal</td><td>3 LISS</td><td>No</td><td>No</td></tr>
+        <tr><td>Intensificación</td><td class="val">5–8</td><td>2650 kcal</td><td>3 LISS + 1 HIIT</td><td>×1/sem</td><td>Sí</td></tr>
+        <tr><td>Peaking</td><td class="val">9–12</td><td>2600 kcal</td><td>3 LISS + 2 HIIT</td><td>×2/sem</td><td>Sí</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="day-section">
+    <div class="day-label"><span>Reglas de oro — no negociables</span></div>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div class="rule" style="background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:.65rem .9rem;font-size:13px;color:#b0ae9a;line-height:1.5;display:flex;gap:.75rem;">
+        <span style="color:var(--orange);font-weight:700;flex-shrink:0;">01</span>
+        Si perdés más del 10% de fuerza en los levantamientos principales → subir 150 kcal/día inmediatamente.
+      </div>
+      <div class="rule" style="background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:.65rem .9rem;font-size:13px;color:#b0ae9a;line-height:1.5;display:flex;gap:.75rem;">
+        <span style="color:var(--orange);font-weight:700;flex-shrink:0;">02</span>
+        Pesate siempre en ayunas, mismo día de la semana. Medir cintura cada 2 semanas.
+      </div>
+      <div class="rule" style="background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:.65rem .9rem;font-size:13px;color:#b0ae9a;line-height:1.5;display:flex;gap:.75rem;">
+        <span style="color:var(--orange);font-weight:700;flex-shrink:0;">03</span>
+        Sueño 8h en Fase 3. El cortisol alto por falta de sueño retiene grasa abdominal y frena la definición.
+      </div>
+      <div class="rule" style="background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:.65rem .9rem;font-size:13px;color:#b0ae9a;line-height:1.5;display:flex;gap:.75rem;">
+        <span style="color:var(--orange);font-weight:700;flex-shrink:0;">04</span>
+        Recarga calórica cada 10–12 días (días de deload o fin de fase). Sube a mantenimiento un día.
+      </div>
+      <div class="rule" style="background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:.65rem .9rem;font-size:13px;color:#b0ae9a;line-height:1.5;display:flex;gap:.75rem;">
+        <span style="color:var(--orange);font-weight:700;flex-shrink:0;">05</span>
+        Rodilla: en la prensa nunca superar 90° de flexión. Si hay molestia → reducir peso 20% y rango de movimiento.
+      </div>
+      <div class="rule" style="background:var(--bg3);border:1px solid var(--line);border-radius:4px;padding:.65rem .9rem;font-size:13px;color:#b0ae9a;line-height:1.5;display:flex;gap:.75rem;">
+        <span style="color:var(--orange);font-weight:700;flex-shrink:0;">06</span>
+        Los pesos son estimados para 90 kg con 2 años de experiencia. Ajustar según realidad — lo que importa es el rango de reps, no el número exacto.
+      </div>
+    </div>
+  </div>
+</div><!-- /ref -->
+
+</div><!-- /container -->
+
+<footer class="footer">
+  <span>NL · 12 SEMANAS</span> — Plan personalizado · 90 kg · 5 días/semana · Avanzado · Knee-safe
+</footer>
 
 <script>
-/* ═══════════════════════════════════════════
-   DATA — 6 PHASES
-═══════════════════════════════════════════ */
-const PHASES = [
-  {
-    id: 0, name: "INTRODUCCIÓN Y TÉCNICA", month: "Abril", monthNums: [4],
-    color: "#c8a96e", colorDim: "rgba(200,169,110,0.08)",
-    rest: "2–3 min",
-    objective: "Aprender los ejercicios, controlar la técnica y establecer líneas base de carga. Volumen moderado.",
-    cardio: { freq: "2×/semana", duration: "35 min", zone: "Zona 2 (130–140 bpm)", mode: "Bicicleta fija o Elíptica" },
-    days: [
-      { name: "DÍA 1", focus: "EMPUJE", sub: "Pecho · Hombro · Tríceps", exercises: [
-        { n: "Press de Banca con Barra", s: 4, r: "8–10", rpe: "8", notes: "Controla la bajada" },
-        { n: "Press Militar Sentado con Mancuernas", s: 3, r: "10–12", rpe: "8" },
-        { n: "Cruces de Polea Bajas", s: 3, r: "12–15", rpe: "9" },
-        { n: "Elevaciones Laterales con Mancuernas", s: 4, r: "12–15", rpe: "9", notes: "Controla la fase excéntrica (bajada)" },
-        { n: "Extensión de Tríceps en Polea con Cuerda", s: 3, r: "12–15", rpe: "9" },
-        { n: "Abdominales Crunch en Polea", s: 3, r: "15–20" }
-      ]},
-      { name: "DÍA 2", focus: "TIRÓN", sub: "Espalda · Hombro Posterior · Bíceps", exercises: [
-        { n: "Jalón al Pecho Agarre Ancho", s: 4, r: "8–10", rpe: "8", notes: "Contrae la espalda" },
-        { n: "Remo con Barra Agarre Supino", s: 4, r: "10–12", rpe: "8" },
-        { n: "Pájaros (Elevaciones Posteriores) con Mancuernas", s: 3, r: "12–15", rpe: "9" },
-        { n: "Encogimientos de Hombros con Mancuernas", s: 3, r: "12–15", rpe: "9" },
-        { n: "Curl de Bíceps con Barra EZ", s: 3, r: "10–12", rpe: "9" },
-        { n: "Flexión Lateral de Tronco (Abdomen)", s: 3, r: "15–20 c/lado" }
-      ]},
-      { name: "DÍA 3", focus: "TORSO SUPERIOR", sub: "Hipertrofia", exercises: [
-        { n: "Press de Banca Inclinado con Mancuernas", s: 4, r: "10–12", rpe: "8" },
-        { n: "Remo al Pecho con Barra T", s: 3, r: "10–12", rpe: "8" },
-        { n: "Aperturas en Máquina", s: 3, r: "12–15 c/u", rpe: "9", ss: 1, notes: "Sin descanso entre ejercicios" },
-        { n: "Flexiones de Pecho", s: 3, r: "12–15 c/u", rpe: "9", ss: 1 },
-        { n: "Elevaciones Laterales en Polea", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 2, notes: "Sin descanso entre ejercicios" },
-        { n: "Pájaros en Máquina", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 2 },
-        { n: "Curl Martillo con Mancuernas", s: 3, r: "10–12", rpe: "9" }
-      ]},
-      { name: "DÍA 4", focus: "EMPUJE", sub: "Bombeo", exercises: [
-        { n: "Press de Pecho en Máquina", s: 4, r: "12–15", rpe: "9", notes: "Foco en conexión mente-músculo" },
-        { n: "Elevaciones Laterales en Máquina o Mancuernas", s: "4–5", r: "15–20", rpe: "9–10", notes: "Baja lentamente" },
-        { n: "Remo al Mentón (Agarre Ancho, controlado)", s: 3, r: "12–15", rpe: "8" },
-        { n: "Press Francés con Mancuernas", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 3, notes: "Sin descanso entre ejercicios" },
-        { n: "Patada de Tríceps", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 3 },
-        { n: "Extensión de Tríceps por encima de la cabeza", s: 3, r: "15–20", rpe: "9–10" }
-      ]},
-      { name: "DÍA 5", focus: "TIRÓN + PIERNA", sub: "Bombeo · Bajo Impacto", exercises: [
-        { n: "Jalón al Pecho Agarre Estrecho Neutro", s: 4, r: "12–15", rpe: "9" },
-        { n: "Remo Gironda (Polea Baja)", s: 3, r: "12–15", rpe: "9" },
-        { n: "Face Pull", s: 3, r: "15–20", rpe: "9–10", notes: "Foco en retracción escapular" },
-        { n: "Curl de Bíceps Inclinado con Mancuernas", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 4, notes: "Sin descanso entre ejercicios" },
-        { n: "Curl Concentrado", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 4 },
-        { n: "Peso Muerto Rumano con Mancuernas o Barra", s: 3, r: "10–12", rpe: "8", knee: true, notes: "Isquiotibiales. Focus en excéntrica." },
-        { n: "Hip Thrust con Barra o Máquina", s: 3, r: "10–12", rpe: "8", knee: true },
-        { n: "Elevación de Piernas Colgado (Abdomen)", s: "3–4", r: "Al fallo técnico" }
-      ]}
-    ]
-  },
-  {
-    id: 1, name: "INTENSIFICACIÓN", month: "Mayo", monthNums: [5],
-    color: "#4ecdc4", colorDim: "rgba(78,205,196,0.10)",
-    rest: "90 seg – 2 min",
-    objective: "Más volumen, técnicas de intensidad, RPE ligeramente más altas. Foco en fatiga metabólica.",
-    cardio: { freq: "2–3×/semana", duration: "40 min", zone: "Zona 2 (130–140 bpm)", mode: "Bicicleta fija o Elíptica" },
-    days: [
-      { name: "DÍA 1", focus: "EMPUJE", exercises: [
-        { n: "Press de Banca con Barra", s: 4, r: "6–8", rpe: "8–9", notes: "Intentar acercarse a 100 kg" },
-        { n: "Press Militar de Pie con Barra", s: 3, r: "8–10", rpe: "8" },
-        { n: "Cruces de Polea Altas", s: 3, r: "12–15", rpe: "9–10", notes: "Foco en el 'apretón' abajo" },
-        { n: "Elevaciones Laterales Inclinado", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 1, notes: "Sin descanso entre ejercicios" },
-        { n: "Remo al Mentón", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 1 },
-        { n: "Extensión de Tríceps con Barra EZ (Banco Inclinado)", s: 3, r: "10–12", rpe: "9" },
-        { n: "Abdominales Crunch con Cuerda en Polea", s: 3, r: "Al fallo técnico" }
-      ]},
-      { name: "DÍA 2", focus: "TIRÓN", exercises: [
-        { n: "Jalón al Pecho Supino (Agarre Estrecho)", s: 4, r: "8–10", rpe: "8" },
-        { n: "Remo con Barra (Agarre Neutro o Barra T)", s: 4, r: "10–12", rpe: "8–9" },
-        { n: "Pájaros con Mancuernas (Banco Inclinado boca abajo)", s: 3, r: "12–15", rpe: "9" },
-        { n: "Encogimientos de Hombros en Barra", s: 3, r: "10–12", rpe: "9" },
-        { n: "Curl de Bíceps con Mancuernas (de pie, alterno)", s: 3, r: "10–12 c/brazo", rpe: "9" },
-        { n: "Plancha Abdominal", s: 3, r: "Al fallo técnico" }
-      ]},
-      { name: "DÍA 3", focus: "TORSO SUPERIOR", exercises: [
-        { n: "Press Inclinado en Máquina", s: 4, r: "10–12", rpe: "8", notes: "Controla la bajada" },
-        { n: "Jalón al Pecho Agarre Neutro Ancho", s: 3, r: "10–12", rpe: "8–9", notes: "Contrae la espalda" },
-        { n: "Aperturas con Mancuernas", s: 3, r: "12–15", rpe: "9", notes: "Controla la bajada lentamente" },
-        { n: "Remo al Pecho con Mancuernas", s: 3, r: "12–15", rpe: "9" },
-        { n: "Curl de Bíceps en Polea Baja", s: 3, r: "Al fallo (bajando peso)", rpe: "10", ds: true, notes: "Reducir peso al fallo en cada serie" }
-      ]},
-      { name: "DÍA 4", focus: "EMPUJE", sub: "Bombeo", exercises: [
-        { n: "Press de Pecho en Máquina (Foco Pecho Superior)", s: 4, r: "12–15", rpe: "9–10" },
-        { n: "Elevaciones Laterales en Máquina", s: 3, r: "15–20 c/u", rpe: "9–10", ss: 2, notes: "Sin descanso entre ejercicios" },
-        { n: "Pájaros en Polea", s: 3, r: "15–20 c/u", rpe: "9–10", ss: 2 },
-        { n: "Remo al Mentón (Agarre Medio, controlado)", s: 3, r: "12–15", rpe: "9" },
-        { n: "Extensión de Tríceps en Polea Alta", s: 3, r: "15–20 c/u", rpe: "9–10", ss: 3, notes: "Sin descanso entre ejercicios" },
-        { n: "Patada de Tríceps", s: 3, r: "15–20 c/u", rpe: "9–10", ss: 3 },
-        { n: "Elevación de Talones Sentado (Gemelos)", s: 4, r: "20–25", rpe: "9–10" }
-      ]},
-      { name: "DÍA 5", focus: "TIRÓN + PIERNA", sub: "Bombeo · Bajo Impacto", exercises: [
-        { n: "Jalón al Pecho Agarre Estrecho Supino", s: 4, r: "12–15", rpe: "9" },
-        { n: "Remo con Mancuerna a una mano", s: 3, r: "12–15 c/brazo", rpe: "9" },
-        { n: "Pájaros con Mancuernas", s: 3, r: "15–20", rpe: "9–10", notes: "Baja lentamente" },
-        { n: "Curl de Bíceps en Polea", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 4, notes: "Sin descanso entre ejercicios" },
-        { n: "Curl Martillo con Mancuernas", s: 3, r: "12–15 c/u", rpe: "9–10", ss: 4 },
-        { n: "Sentadilla Goblet con Mancuerna", s: 3, r: "12–15", rpe: "7–8", knee: true, notes: "Técnica PERFECTA. No bajar del todo si hay molestia." },
-        { n: "Leg Press (carga ligera, rango controlado)", s: 3, r: "12–15", rpe: "7–8", knee: true, notes: "Solo mitad superior del recorrido. No doblar rodillas de más." },
-        { n: "Elevación de Talones de Pie", s: 4, r: "20–25", rpe: "9–10" },
-        { n: "Oblicuos en Polea (Abdomen)", s: 3, r: "15–20 c/lado" }
-      ]}
-    ]
-  },
-  {
-    id: 2, name: "DENSIDAD Y RANGO DE MOVIMIENTO", month: "Jun – Jul", monthNums: [6, 7],
-    color: "#e07b4c", colorDim: "rgba(224,123,76,0.10)",
-    rest: "60–90 seg máx.",
-    objective: "Aumentar estrés metabólico reduciendo descansos. Cambio a mancuernas para mayor estiramiento.",
-    cardio: { freq: "3×/semana (Miér obligatorio)", duration: "45 min", zone: "Zona 2 (130–140 bpm)", mode: "Bicicleta fija o Elíptica" },
-    days: [
-      { name: "LUNES", focus: "EMPUJE", sub: "Pecho · Hombro Lateral", exercises: [
-        { n: "Press de Banca con Mancuernas", s: 4, r: "8–10", notes: "Baja profundo, estira el pecho" },
-        { n: "Press Militar Sentado con Mancuernas", s: 4, r: "10–12" },
-        { n: "Aperturas en Banco Inclinado (Polea o Mancuernas)", s: 3, r: "12–15" },
-        { n: "Elevaciones Laterales en Polea (por detrás de la espalda)", s: 4, r: "15" },
-        { n: "Extensión de Tríceps sobre la cabeza con Cuerda", s: 4, r: "12–15" }
-      ]},
-      { name: "MARTES", focus: "TIRÓN", sub: "Espalda · Hombro Posterior", exercises: [
-        { n: "Dominadas o Jalón al Pecho Agarre Neutro", s: 4, r: "8–10" },
-        { n: "Remo con Mancuerna a una mano", s: 4, r: "10–12", notes: "Objetivo: 65 kg equiv." },
-        { n: "Face Pull en Polea Alta", s: 4, r: "15" },
-        { n: "Pájaros con Mancuernas (pecho apoyado en banco)", s: 3, r: "15" },
-        { n: "Curl de Bíceps Alterno con Mancuernas", s: 4, r: "10–12", notes: "Objetivo: 17.5 kg por brazo" }
-      ]},
-      { name: "MIÉRCOLES", focus: "CARDIO", sub: "Descanso Activo", cardioOnly: true, exercises: [] },
-      { name: "JUEVES", focus: "TORSO", sub: "Superseries Antagonistas", exercises: [
-        { n: "Press Inclinado con Barra", s: 3, r: "10 c/u", ss: 1, notes: "Sin descanso entre ejercicios" },
-        { n: "Remo con Barra", s: 3, r: "10 c/u", ss: 1 },
-        { n: "Cruces de Polea Alta", s: 3, r: "15", ss: 2, notes: "Sin descanso" },
-        { n: "Jalón al Pecho Supino", s: 3, r: "12", ss: 2 },
-        { n: "Elevaciones Laterales con Mancuernas", s: 4, r: "15 c/u", ss: 3, notes: "Sin descanso" },
-        { n: "Elevaciones Posteriores", s: 4, r: "15 c/u", ss: 3 },
-        { n: "Elevación de piernas colgado (Abdomen)", s: 3, r: "Al fallo" }
-      ]},
-      { name: "VIERNES", focus: "BRAZOS + HOMBRO", sub: "Aislamiento", exercises: [
-        { n: "Curl con Barra EZ", s: 4, r: "10–12" },
-        { n: "Press Francés con Barra EZ o Mancuernas", s: 4, r: "10–12" },
-        { n: "Curl Martillo en Polea con Cuerda", s: 3, r: "15" },
-        { n: "Extensión de Tríceps en Polea (barra recta)", s: 3, r: "15" },
-        { n: "Elevaciones Laterales en Máquina", s: 4, r: "20", notes: "Quemazón pura. Sin trampa." }
-      ]},
-      { name: "SÁBADO", focus: "PIERNA + CORE", sub: "Cadena Posterior", exercises: [
-        { n: "Peso Muerto Rumano con Barra", s: 4, r: "10–12", knee: true, notes: "Toda la tensión en isquios y glúteos." },
-        { n: "Curl Femoral Tumbado o Sentado", s: 4, r: "12–15", knee: true },
-        { n: "Hip Thrust (Puente de Glúteo) con Barra", s: 3, r: "12–15", knee: true },
-        { n: "Elevación de Talones (Gemelos) de Pie", s: 5, r: "20" },
-        { n: "Plancha Abdominal", s: 4, r: "45–60 seg" }
-      ]}
-    ]
-  },
-  {
-    id: 3, name: "FATIGA METABÓLICA", month: "Ago – Sep", monthNums: [8, 9],
-    color: "#e84855", colorDim: "rgba(232,72,85,0.10)",
-    rest: "60–90 seg",
-    objective: "Déficit calórico intenso. Drop Sets en últimos ejercicios para vaciar glucógeno y dar aspecto rocoso.",
-    cardio: { freq: "3×/semana (Miér obligatorio)", duration: "45 min", zone: "Zona 2/3 (135–145 bpm)", mode: "Bicicleta fija o Elíptica" },
-    days: [
-      { name: "LUNES", focus: "EMPUJE", exercises: [
-        { n: "Press de Banca con Barra", s: 4, r: "8–10" },
-        { n: "Press Inclinado en Máquina (Smith/Multipower)", s: 3, r: "10–12" },
-        { n: "Elevaciones Laterales con Mancuernas", s: 4, r: "12–15", ds: true, notes: "Drop Set en última serie: bajar peso a la mitad, al fallo" },
-        { n: "Cruces de Polea Bajas", s: 3, r: "15" },
-        { n: "Extensión de Tríceps en Polea", s: 3, r: "12–15", ds: true, notes: "Drop Set en la última serie" }
-      ]},
-      { name: "MARTES", focus: "TIRÓN", exercises: [
-        { n: "Remo con Barra T o en Máquina (pecho apoyado)", s: 4, r: "10–12" },
-        { n: "Jalón al Pecho Agarre Ancho", s: 3, r: "10–12" },
-        { n: "Pájaros en Máquina (Peck Deck Inverso)", s: 4, r: "15", ds: true, notes: "Drop Set en última serie" },
-        { n: "Curl de Bíceps en Banco Scott o Máquina", s: 3, r: "10–12", ds: true, notes: "Drop Set en última serie" },
-        { n: "Encogimientos de Hombro", s: 3, r: "15" }
-      ]},
-      { name: "MIÉRCOLES", focus: "CARDIO", sub: "Descanso Activo", cardioOnly: true, exercises: [] },
-      { name: "JUEVES", focus: "TORSO SUPERIOR", sub: "Bombeo", exercises: [
-        { n: "Press de Pecho en Máquina Convergente", s: 4, r: "12–15" },
-        { n: "Remo Gironda (Polea Baja)", s: 4, r: "12–15" },
-        { n: "Elevaciones Laterales en Polea a una mano", s: 4, r: "15 c/brazo" },
-        { n: "Curl de Bíceps Inclinado (Mancuernas)", s: 3, r: "12–15" },
-        { n: "Patada de Tríceps con Polea", s: 3, r: "15 c/brazo" }
-      ]},
-      { name: "VIERNES", focus: "HOMBRO 3D + ABDOMEN", exercises: [
-        { n: "Press Militar en Máquina", s: 4, r: "10–12" },
-        { n: "Elevaciones Laterales pesadas (trampa)", s: 4, r: "10", ss: 1, notes: "Primero con trampa, luego estricto con peso ligero" },
-        { n: "Elevaciones Laterales estrictas (peso ligero)", s: 4, r: "10", ss: 1 },
-        { n: "Face Pull", s: 4, r: "15–20" },
-        { n: "Crunch en Polea Alta (Abdomen)", s: 4, r: "15–20" },
-        { n: "Giros Rusos o Planchas Laterales", s: 3, r: "Al fallo" }
-      ]},
-      { name: "SÁBADO", focus: "PIERNA + CORE", sub: "Cadena Posterior", exercises: [
-        { n: "Peso Muerto Rumano con Mancuernas", s: 4, r: "12", knee: true },
-        { n: "Curl Femoral a una pierna", s: 3, r: "15 c/pierna", knee: true },
-        { n: "Extensiones de Cuádriceps (MUY LIGERO)", s: 3, r: "20", knee: true, warning: true, notes: "⚠️ SOLO si hay CERO dolor. Apretar arriba, bajada 3 seg. Si molesta → Sentadilla Búlgara estática sin peso." },
-        { n: "Elevación de Talones Sentado (Costurera)", s: 4, r: "20" },
-        { n: "Elevación de Piernas Colgado", s: 4, r: "Al fallo" }
-      ]}
-    ]
-  },
-  {
-    id: 4, name: "REFINAMIENTO ESTÉTICO", month: "Oct – Nov", monthNums: [10, 11],
-    color: "#7b97f6", colorDim: "rgba(123,151,246,0.10)",
-    rest: "45–60 seg",
-    objective: "Foco absoluto en proporción. Hombros anchos, cintura estrecha, brazos densos. Cargas bajas, reps altas.",
-    cardio: { freq: "3×/semana", duration: "40 min", zone: "Zona 2/3 (135–145 bpm)", mode: "Bicicleta fija o Elíptica" },
-    days: [
-      { name: "LUNES", focus: "PECHO Y ESPALDA ANCHO", exercises: [
-        { n: "Press Inclinado en Máquina", s: 4, r: "12–15" },
-        { n: "Aperturas (Polea o Mancuernas)", s: 4, r: "12–15" },
-        { n: "Jalón al Pecho Agarre Ancho", s: 4, r: "12–15" },
-        { n: "Pull-over en Polea", s: 3, r: "15–20", notes: "Para expandir la caja torácica" }
-      ]},
-      { name: "MARTES", focus: "BRAZOS + HOMBRO LATERAL", exercises: [
-        { n: "Curl Barra EZ", s: 4, r: "12–15" },
-        { n: "Press Francés", s: 4, r: "12–15" },
-        { n: "Bíceps en Polea", s: 4, r: "12–15 c/u", ss: 1, notes: "Alternando sin descanso" },
-        { n: "Tríceps en Polea", s: 4, r: "12–15 c/u", ss: 1 },
-        { n: "Elevaciones Laterales", s: 5, r: "20", notes: "Quemazón total." }
-      ]},
-      { name: "JUEVES", focus: "HOMBRO COMPLETO", exercises: [
-        { n: "Press Militar Mancuernas", s: 4, r: "10–12" },
-        { n: "Elevaciones Laterales", s: 4, r: "15–20" },
-        { n: "Pájaros (Elevaciones Posteriores)", s: 4, r: "15" },
-        { n: "Face Pull", s: 4, r: "15–20" },
-        { n: "Encogimientos de Hombros", s: 3, r: "15" }
-      ]},
-      { name: "VIERNES", focus: "PECHO Y ESPALDA", sub: "Densidad", exercises: [
-        { n: "Remo Barra", s: 4, r: "10–12" },
-        { n: "Remo Mancuerna", s: 4, r: "12–15" },
-        { n: "Press Plano Mancuernas", s: 4, r: "10–12" },
-        { n: "Cruces Polea", s: 3, r: "15" }
-      ]},
-      { name: "SÁBADO", focus: "PIERNA Y CORE", exercises: [
-        { n: "Peso Muerto Rumano", s: 4, r: "12–15", knee: true },
-        { n: "Curl Femoral", s: 4, r: "15", knee: true },
-        { n: "Gemelos de Pie", s: 5, r: "20–25" },
-        { n: "Elevaciones de piernas colgado", s: 4, r: "Al fallo" },
-        { n: "Planchas Laterales", s: 3, r: "45 seg" },
-        { n: "Vacío Abdominal (Stomach Vacuum)", s: 3, r: "20–30 seg", notes: "Para afinar cintura." }
-      ]}
-    ]
-  },
-  {
-    id: 5, name: "PUESTA A PUNTO", month: "Diciembre", monthNums: [12],
-    color: "#d4a5e5", colorDim: "rgba(212,165,229,0.08)",
-    rest: "60–90 seg",
-    objective: "Bombear sangre, meter glucógeno al músculo. El % de grasa ya debe estar en su punto más bajo.",
-    specialNote: "Todos los ejercicios a 3 series × 15 reps. RPE máx 7–8. NO llegar al fallo muscular. Después de cada serie: poses isométricas frente al espejo.",
-    cardio: { freq: "2×/semana", duration: "30 min", zone: "Zona 1/2 (120–130 bpm)", mode: "Caminata a paso vivo o Bicicleta suave" },
-    days: [
-      { name: "DÍA 1", focus: "EMPUJE", sub: "Pecho · Hombro · Tríceps", exercises: [
-        { n: "Press de Banca con Barra", s: 3, r: "15", rpe: "7–8", notes: "Poses isométricas después de cada serie" },
-        { n: "Press Militar Sentado con Mancuernas", s: 3, r: "15", rpe: "7–8" },
-        { n: "Cruces de Polea Bajas", s: 3, r: "15", rpe: "7–8" },
-        { n: "Elevaciones Laterales con Mancuernas", s: 3, r: "15", rpe: "7–8" },
-        { n: "Extensión de Tríceps en Polea con Cuerda", s: 3, r: "15", rpe: "7–8" },
-        { n: "Abdominales Crunch en Polea", s: 3, r: "15" }
-      ]},
-      { name: "DÍA 2", focus: "TIRÓN", sub: "Espalda · Hombro Posterior · Bíceps", exercises: [
-        { n: "Jalón al Pecho Agarre Ancho", s: 3, r: "15", rpe: "7–8" },
-        { n: "Remo con Barra Agarre Supino", s: 3, r: "15", rpe: "7–8" },
-        { n: "Pájaros (Elevaciones Posteriores) con Mancuernas", s: 3, r: "15", rpe: "7–8" },
-        { n: "Encogimientos de Hombros con Mancuernas", s: 3, r: "15", rpe: "7–8" },
-        { n: "Curl de Bíceps con Barra EZ", s: 3, r: "15", rpe: "7–8" },
-        { n: "Flexión Lateral de Tronco", s: 3, r: "15 c/lado" }
-      ]},
-      { name: "DÍA 3", focus: "TORSO SUPERIOR", exercises: [
-        { n: "Press de Banca Inclinado con Mancuernas", s: 3, r: "15", rpe: "7–8" },
-        { n: "Remo al Pecho con Barra T", s: 3, r: "15", rpe: "7–8" },
-        { n: "Aperturas en Máquina", s: 3, r: "15 c/u", ss: 1 },
-        { n: "Flexiones de Pecho", s: 3, r: "15 c/u", ss: 1 },
-        { n: "Curl Martillo con Mancuernas", s: 3, r: "15", rpe: "7–8" }
-      ]},
-      { name: "DÍA 4", focus: "EMPUJE", sub: "Bombeo", exercises: [
-        { n: "Press de Pecho en Máquina", s: 3, r: "15", rpe: "7–8" },
-        { n: "Elevaciones Laterales en Máquina", s: 3, r: "15", rpe: "7–8" },
-        { n: "Remo al Mentón (controlado)", s: 3, r: "15", rpe: "7–8" },
-        { n: "Extensión de Tríceps en Polea", s: 3, r: "15", rpe: "7–8" }
-      ]},
-      { name: "DÍA 5", focus: "TIRÓN + PIERNA", sub: "Bajo Impacto", exercises: [
-        { n: "Jalón al Pecho Agarre Estrecho Neutro", s: 3, r: "15", rpe: "7–8" },
-        { n: "Remo Gironda (Polea Baja)", s: 3, r: "15", rpe: "7–8" },
-        { n: "Face Pull", s: 3, r: "15", rpe: "7–8" },
-        { n: "Curl de Bíceps Alterno con Mancuernas", s: 3, r: "15", rpe: "7–8" },
-        { n: "Peso Muerto Rumano", s: 3, r: "15", knee: true, rpe: "7–8" },
-        { n: "Hip Thrust", s: 3, r: "15", knee: true, rpe: "7–8" },
-        { n: "Elevación de Piernas Colgado", s: 3, r: "15" }
-      ]}
-    ]
-  }
-];
-
-/* ═══════════════════════════════════════════
-   STATE
-═══════════════════════════════════════════ */
-let state = { phase: 0, day: 0 };
-let checks = {};
-
-const STORAGE_KEY = 'nlPlan_v3';
-
-function loadStorage() {
-  try { checks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch(e) { checks = {}; }
-}
-function saveStorage() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(checks));
+function showPhase(id, btn) {
+  document.querySelectorAll('.phase-block').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.pnav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function exKey(p, d, e) { return `p${p}_d${d}_e${e}`; }
-
-function isChecked(p, d, e) { return !!checks[exKey(p, d, e)]; }
-
-function toggle(p, d, e) {
-  const k = exKey(p, d, e);
-  checks[k] = !checks[k];
-  saveStorage();
-  render();
+function toggleWeek(id) {
+  const w = document.getElementById(id);
+  w.classList.toggle('open');
 }
 
-function resetDay(p, d) {
-  const phase = PHASES[p];
-  const day = phase.days[d];
-  day.exercises.forEach((_, i) => { delete checks[exKey(p, d, i)]; });
-  saveStorage();
-  render();
-}
-
-function markAllDay(p, d) {
-  const phase = PHASES[p];
-  const day = phase.days[d];
-  day.exercises.forEach((_, i) => { checks[exKey(p, d, i)] = true; });
-  saveStorage();
-  render();
-}
-
-/* ═══════════════════════════════════════════
-   PROGRESS
-═══════════════════════════════════════════ */
-function calcProgress() {
-  let total = 0, done = 0;
-  PHASES.forEach((ph, pi) => {
-    ph.days.forEach((day, di) => {
-      day.exercises.forEach((_, ei) => {
-        total++;
-        if (isChecked(pi, di, ei)) done++;
-      });
-    });
-  });
-  return total ? Math.round((done / total) * 100) : 0;
-}
-
-function isDayComplete(p, d) {
-  const phase = PHASES[p];
-  const day = phase.days[d];
-  if (!day.exercises.length) return false;
-  return day.exercises.every((_, i) => isChecked(p, d, i));
-}
-
-/* ═══════════════════════════════════════════
-   DETECT CURRENT PHASE
-═══════════════════════════════════════════ */
-function detectCurrentPhase() {
-  const m = new Date().getMonth() + 1;
-  const idx = PHASES.findIndex(ph => ph.monthNums.includes(m));
-  return idx >= 0 ? idx : 0;
-}
-
-/* ═══════════════════════════════════════════
-   RENDER
-═══════════════════════════════════════════ */
-function applyPhaseColor(color, colorDim) {
-  document.documentElement.style.setProperty('--phase', color);
-  document.documentElement.style.setProperty('--phase-dim', colorDim);
-}
-
-function render() {
-  const ph = PHASES[state.phase];
-  applyPhaseColor(ph.color, ph.colorDim);
-  renderPhaseTabs();
-  renderPhaseHeader();
-  renderDayTabs();
-  renderDayContent();
-  renderProgress();
-}
-
-function renderPhaseTabs() {
-  const el = document.getElementById('phase-tabs');
-  el.innerHTML = PHASES.map((ph, i) => `
-    <div class="phase-chip ${i === state.phase ? 'active' : ''}" onclick="selectPhase(${i})">
-      <div class="phase-chip-num" style="color:${ph.color}">${i + 1}</div>
-      <div class="phase-chip-label">${ph.month.split(' ')[0]}</div>
-    </div>
-  `).join('');
-}
-
-function renderPhaseHeader() {
-  const ph = PHASES[state.phase];
-  const c = ph.cardio;
-  document.getElementById('phase-header').innerHTML = `
-    <div class="phase-header">
-      <div class="phase-name">FASE ${state.phase + 1} — ${ph.name}</div>
-      <div class="phase-meta">
-        <div class="meta-pill">📅 <strong>${ph.month}</strong></div>
-        <div class="meta-pill">⏸ Descanso: <strong>${ph.rest}</strong></div>
-      </div>
-      <div class="phase-obj">${ph.objective}</div>
-      ${ph.specialNote ? `<div class="phase-special-note">${ph.specialNote}</div>` : ''}
-    </div>
-    <div class="cardio-summary">
-      <div class="cardio-icon">🚴</div>
-      <div class="cardio-info">
-        <div class="cardio-title">CARDIO — ${c.freq}</div>
-        <div class="cardio-detail">${c.duration} · <strong>${c.zone}</strong><br>${c.mode} — Sin impacto articular</div>
-      </div>
-    </div>
-  `;
-}
-
-function renderDayTabs() {
-  const ph = PHASES[state.phase];
-  const el = document.getElementById('day-tabs');
-  el.innerHTML = ph.days.map((day, i) => {
-    const complete = isDayComplete(state.phase, i);
-    return `
-      <div class="day-tab ${i === state.day ? 'active' : ''} ${day.cardioOnly ? 'cardio-day' : ''} ${complete ? 'completed-day' : ''}" onclick="selectDay(${i})">
-        <div class="day-tab-name">${day.name}</div>
-        <div class="day-tab-focus">${day.focus}</div>
-      </div>
-    `;
-  }).join('');
-  // scroll active into view
-  const activeTab = el.querySelector('.day-tab.active');
-  if (activeTab) activeTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-}
-
-function renderDayContent() {
-  const ph = PHASES[state.phase];
-  const day = ph.days[state.day];
-  const el = document.getElementById('day-content');
-  el.className = 'day-content fade-in';
-  void el.offsetWidth; // trigger reflow for animation
-
-  if (day.cardioOnly) {
-    const c = ph.cardio;
-    el.innerHTML = `
-      <div class="cardio-day-card">
-        <div class="cardio-day-icon">🚴</div>
-        <div class="cardio-day-title">SESIÓN DE CARDIO</div>
-        <div class="cardio-day-detail">
-          <strong>${c.duration}</strong> de cardio continuo<br>
-          Zona: <strong>${c.zone}</strong><br>
-          Modalidad: <strong>${c.mode}</strong>
-        </div>
-        <div class="cardio-warning">⚠️ Siempre elegir bicicleta fija o elíptica. Evitar correr — proteger el tendón rotuliano.</div>
-      </div>
-    `;
-    return;
-  }
-
-  const allDone = day.exercises.length > 0 && day.exercises.every((_, i) => isChecked(state.phase, state.day, i));
-
-  // Group exercises by superset
-  const groups = [];
-  let i = 0;
-  while (i < day.exercises.length) {
-    const ex = day.exercises[i];
-    if (ex.ss) {
-      const ssNum = ex.ss;
-      const group = [{ ex, idx: i }];
-      while (i + 1 < day.exercises.length && day.exercises[i + 1].ss === ssNum) {
-        i++;
-        group.push({ ex: day.exercises[i], idx: i });
-      }
-      groups.push({ type: 'ss', items: group });
-    } else {
-      groups.push({ type: 'single', ex, idx: i });
-    }
-    i++;
-  }
-
-  const exercisesHTML = groups.map(g => {
-    if (g.type === 'single') {
-      return renderExercise(g.ex, g.idx);
-    } else {
-      const itemsHTML = g.items.map(({ ex, idx }) => renderExercise(ex, idx)).join('');
-      return `<div class="ss-group">${itemsHTML}</div>`;
-    }
-  }).join('');
-
-  el.innerHTML = `
-    <div class="day-header">
-      <div class="day-title" style="color:var(--phase)">${day.focus}</div>
-      ${day.sub ? `<div class="day-sub">${day.sub}</div>` : ''}
-      <div class="day-rest">⏱ Descanso: <strong>${ph.rest}</strong></div>
-    </div>
-    ${allDone ? `<div class="done-banner show"><div class="done-banner-title">✅ SESIÓN COMPLETADA</div><div class="done-banner-sub">¡Excelente trabajo, Nicolas!</div></div>` : ''}
-    <div class="day-actions">
-      <button class="btn-reset" onclick="resetDay(${state.phase},${state.day})">↺ Resetear día</button>
-      <button class="btn-mark-all" onclick="markAllDay(${state.phase},${state.day})">✓ Marcar todo</button>
-    </div>
-    <div class="section-div"><div class="section-div-line"></div><div class="section-div-label">${day.exercises.length} ejercicios</div><div class="section-div-line"></div></div>
-    ${exercisesHTML}
-    <div class="legend">
-      <div class="legend-title">Leyenda</div>
-      <div class="legend-row"><span class="badge badge-ss">SUPERSERIE</span><span>Dos ejercicios sin descanso entre ellos</span></div>
-      <div class="legend-row"><span class="badge badge-ds">DROP SET</span><span>Reducir peso al fallo y continuar</span></div>
-      <div class="legend-row"><span class="badge badge-knee">🦵 RODILLA</span><span>Ejercicio con impacto potencial — ejecutar con cuidado</span></div>
-    </div>
-  `;
-}
-
-function renderExercise(ex, idx) {
-  const checked = isChecked(state.phase, state.day, idx);
-  const badges = [];
-  if (ex.rpe) badges.push(`<span class="badge badge-rpe">RPE ${ex.rpe}</span>`);
-  if (ex.ss) badges.push(`<span class="badge badge-ss">🔗 SUPERSERIE</span>`);
-  if (ex.ds) badges.push(`<span class="badge badge-ds">⬇ DROP SET</span>`);
-  if (ex.knee) badges.push(`<span class="badge badge-knee">🦵 RODILLA</span>`);
-  if (ex.warning) badges.push(`<span class="badge badge-warn">⚠️ PRECAUCIÓN</span>`);
-
-  return `
-    <div class="exercise-card ${checked ? 'done' : ''} ${ex.warning ? 'warning-card' : ''}" onclick="toggle(${state.phase},${state.day},${idx})">
-      <div class="ex-check ${checked ? 'checked' : ''}"></div>
-      <div class="ex-body">
-        <div class="ex-top">
-          <div class="ex-name">${ex.n}</div>
-          <div class="ex-sets-reps">
-            <div class="ex-sets">${ex.s}<span style="font-size:12px;font-weight:600;color:var(--muted)">×</span></div>
-            <div class="ex-reps">${ex.r}</div>
-          </div>
-        </div>
-        ${badges.length ? `<div class="ex-badges">${badges.join('')}</div>` : ''}
-        ${ex.notes ? `<div class="ex-notes ${ex.warning ? 'warning-note' : ''}">${ex.notes}</div>` : ''}
-      </div>
-    </div>
-  `;
-}
-
-function renderProgress() {
-  const pct = calcProgress();
-  document.getElementById('prog-fill').style.width = pct + '%';
-  document.getElementById('prog-pct').textContent = pct + '%';
-  // date
-  const now = new Date();
-  document.getElementById('topbar-date').textContent = now.toLocaleDateString('es-AR', { weekday:'short', day:'numeric', month:'short' }).toUpperCase();
-}
-
-/* ═══════════════════════════════════════════
-   NAVIGATION
-═══════════════════════════════════════════ */
-function selectPhase(i) {
-  state.phase = i;
-  state.day = 0;
-  render();
-}
-
-function selectDay(i) {
-  state.day = i;
-  renderDayTabs();
-  renderDayContent();
-}
-
-/* ═══════════════════════════════════════════
-   TIMER
-═══════════════════════════════════════════ */
-let timerTotal = 60, timerLeft = 60, timerRunning = false, timerInterval = null;
-const CIRCUMFERENCE = 2 * Math.PI * 88; // r=88
-
-function openTimer() { document.getElementById('timer-overlay').classList.add('open'); updateTimerUI(); }
-function closeTimer() { document.getElementById('timer-overlay').classList.remove('open'); }
-
-function setPreset(sec) {
-  if (timerRunning) { clearInterval(timerInterval); timerRunning = false; }
-  timerTotal = sec;
-  timerLeft = sec;
-  document.querySelectorAll('.timer-preset').forEach(b => {
-    b.classList.toggle('active', parseInt(b.textContent) === sec || (b.textContent === '2min' && sec === 120) || (b.textContent === '3min' && sec === 180));
-  });
-  updateTimerUI();
-}
-
-function toggleTimer() {
-  if (timerRunning) {
-    clearInterval(timerInterval); timerRunning = false;
-  } else {
-    if (timerLeft <= 0) timerLeft = timerTotal;
-    timerRunning = true;
-    timerInterval = setInterval(() => {
-      timerLeft--;
-      if (timerLeft <= 0) {
-        timerLeft = 0; timerRunning = false;
-        clearInterval(timerInterval);
-        try { navigator.vibrate && navigator.vibrate([200, 100, 200]); } catch(e) {}
-        document.getElementById('timer-status').textContent = '¡LISTO!';
-      }
-      updateTimerUI();
-    }, 1000);
-  }
-  updateTimerUI();
-}
-
-function resetTimer() {
-  clearInterval(timerInterval); timerRunning = false;
-  timerLeft = timerTotal;
-  updateTimerUI();
-}
-
-function updateTimerUI() {
-  const ring = document.getElementById('ring');
-  const disp = document.getElementById('timer-display');
-  const status = document.getElementById('timer-status');
-  const fabTime = document.getElementById('fab-time');
-  const fab = document.getElementById('timer-fab');
-  const btnStart = document.getElementById('btn-start');
-
-  const progress = timerLeft / timerTotal;
-  const offset = CIRCUMFERENCE * (1 - progress);
-  ring.style.strokeDashoffset = offset;
-
-  const m = Math.floor(timerLeft / 60);
-  const s = timerLeft % 60;
-  const timeStr = m > 0 ? `${m}:${s.toString().padStart(2,'0')}` : `${s}`;
-  disp.textContent = timeStr;
-  fabTime.textContent = timerRunning ? timeStr : '';
-
-  if (timerLeft <= 0) {
-    status.textContent = '¡LISTO!';
-    ring.style.stroke = '#6dc56d';
-  } else {
-    ring.style.stroke = 'var(--phase)';
-    status.textContent = timerRunning ? 'CORRIENDO' : (timerLeft < timerTotal ? 'PAUSADO' : 'LISTO');
-  }
-
-  btnStart.textContent = timerRunning ? 'PAUSAR' : (timerLeft < timerTotal && timerLeft > 0 ? 'REANUDAR' : 'INICIAR');
-  fab.classList.toggle('running', timerRunning);
-}
-
-/* ═══════════════════════════════════════════
-   INIT
-═══════════════════════════════════════════ */
-loadStorage();
-state.phase = detectCurrentPhase();
-render();
-updateTimerUI();
+// Abrir semana 1 por defecto
+document.getElementById('w1').classList.add('open');
 </script>
 </body>
 </html>
