@@ -572,10 +572,9 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:
           <span>Bloque de Estrategia</span>
         </div>
         <select class="form-control" id="selectPhaseBlock" onchange="updateCalculator()">
-          <option value="reset" selected>Bloque 0: Retorno & Reactivación Neural (Sem 1–2) — Déficit Suave (-250 kcal)</option>
-          <option value="ignition">Bloque 1: Sobrecarga & Quema Acelerada (Sem 3–7) — Déficit Óptimo (-450 kcal)</option>
-          <option value="deload">Bloque 2: Descarga Neural & Recarga de Glucógeno (Sem 8) — Mantenimiento</option>
-          <option value="peaking">Bloque 3: Peaking Verano & Definición Extrema (Sem 9–14) — Déficit de Precisión (-550 kcal)</option>
+          <option value="reset" selected>Bloque 0: Reactivación Neural (Esta semana: 7–13 Sept) — Déficit Suave (-250 kcal)</option>
+          <option value="ignition">Bloque 1: Sobrecarga & Tracción Grasa (14–30 Sept) — Déficit Óptimo (-450 kcal)</option>
+          <option value="peaking">Bloque 2: Peaking Verano & Secado Extremo (Oct–Dic / Sin Deload) — Déficit Máximo (-550 kcal)</option>
         </select>
       </div>
 
@@ -687,19 +686,19 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:
 
   <!-- BLOQUES DE LA OPERACIÓN VERANO (14 SEMANAS) -->
 
-  <!-- BLOQUE 0: SEMANAS 1 Y 2 -->
+  <!-- BLOQUE 0: ESTA SEMANA (7 A 13 DE SEPTIEMBRE) -->
   <div class="week open" id="sb0">
     <div class="week-header" onclick="toggleWeek('sb0')">
       <div class="week-left">
         <div class="week-num" style="color:#4ec491;">B0</div>
         <div>
-          <div class="week-title">Bloque 0 (Semanas 1–2) — Retorno al Gym & Reactivación Neural</div>
-          <div class="week-sub">¡Paso 1! Reactivar memoria muscular, readaptar tendones y encender la lipólisis a RIR 2–3.</div>
+          <div class="week-title">Bloque 0 (Esta semana: 7–13 Sept) — Reactivación Neural & Cargas Base</div>
+          <div class="week-sub">¡Paso actual! Tras tu semana de adaptación previa, cerramos la reactivación a RIR 2–3 con déficit suave.</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;">
         <div class="week-badges">
-          <span class="badge b-green">Memoria Muscular</span>
+          <span class="badge b-green">Semana 7–13 Sept</span>
           <span class="badge b-orange">~2750 kcal</span>
           <span class="badge b-blue">Ayuno 16/8</span>
           <span class="badge b-muted">RIR 2–3</span>
@@ -774,29 +773,29 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:
       </div>
 
       <div class="macro-row">
-        <div class="macro-chip"><div class="mk">Calorías Reset</div><div class="mv">~3000</div></div>
+        <div class="macro-chip"><div class="mk">Calorías Suaves</div><div class="mv">~2750</div></div>
         <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">210g</div></div>
-        <div class="macro-chip"><div class="mk">Carbos Limpios</div><div class="mv">330g</div></div>
+        <div class="macro-chip"><div class="mk">Carbos</div><div class="mv">300g</div></div>
         <div class="macro-chip"><div class="mk">Grasas</div><div class="mv">75g</div></div>
       </div>
     </div>
   </div>
 
-  <!-- BLOQUE 1: SEMANAS 3 A 7 -->
+  <!-- BLOQUE 1: 14 A 30 DE SEPTIEMBRE (RESTO DE SEPTIEMBRE) -->
   <div class="week" id="sb1">
     <div class="week-header" onclick="toggleWeek('sb1')">
       <div class="week-left">
         <div class="week-num" style="color:var(--orange);">B1</div>
         <div>
-          <div class="week-title">Bloque 1 (Semanas 3–7) — Sobrecarga Progresiva & Tracción Grasa</div>
-          <div class="week-sub">Déficit óptimo (-450 kcal), subida a RIR 1–2, 10k pasos diarios y drop-sets mecánicos.</div>
+          <div class="week-title">Bloque 1 (14–30 Septiembre) — Sobrecarga Progresiva & Tracción Grasa</div>
+          <div class="week-sub">Resto de septiembre a fondo: subida a RIR 1–2, aumento de cargas con memoria muscular y déficit de –450 kcal.</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;">
         <div class="week-badges">
           <span class="badge b-orange">~2550 kcal</span>
           <span class="badge b-blue">RIR 1–2</span>
-          <span class="badge b-green">10k Pasos</span>
+          <span class="badge b-green">14–30 Sept</span>
         </div>
         <div class="chevron">▾</div>
       </div>
@@ -878,56 +877,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--font-b);font-size:
     </div>
   </div>
 
-  <!-- BLOQUE 2: SEMANA 8 -->
+  <!-- BLOQUE 2: OCTUBRE A DICIEMBRE (PEAKING VERANO CONTINUO SIN DELOAD) -->
   <div class="week" id="sb2">
     <div class="week-header" onclick="toggleWeek('sb2')">
       <div class="week-left">
-        <div class="week-num" style="color:var(--yellow);">B2</div>
+        <div class="week-num" style="color:#ff914d;">B2</div>
         <div>
-          <div class="week-title">Bloque 2 (Semana 8) — Deload Estratégico & Recarga de Leptina</div>
-          <div class="week-sub">El seguro anti-rebote: 1 semana de descarga para evitar el estancamiento previo.</div>
+          <div class="week-title">Bloque 2 (Octubre a Diciembre) — Peaking Verano Definitivo & Secado Extremo</div>
+          <div class="week-sub">Cero deload. Octubre, Noviembre y Diciembre directo a máxima definición, carbociclado y densidad rocosa.</div>
         </div>
       </div>
       <div style="display:flex;align-items:center;gap:.75rem;">
         <div class="week-badges">
-          <span class="badge b-yellow">Deload</span>
-          <span class="badge b-muted">–40% Volumen</span>
-          <span class="badge b-orange">Recarga 2850 kcal</span>
-        </div>
-        <div class="chevron">▾</div>
-      </div>
-    </div>
-    <div class="week-body">
-      <div class="note-box">
-        <strong>Protocolo de Descarga:</strong> Mantener los mismos pesos, pero reducir el volumen a solo <strong>2 series por ejercicio</strong>. Sin llegar al fallo. Cero HIIT en bici esta semana. 2 sesiones LISS suaves de 30 min.
-      </div>
-      <div class="cardio-box" style="margin-top:0.75rem;">
-        <strong>Recarga Nutricional (Miércoles y Sábado):</strong> Subir calorías a 2850 kcal basadas en carbohidratos complejos (arroz, fideos integrales, papas). Esto resetea los niveles de leptina y tiroides (T3), preparando al cuerpo para el peaking final de noviembre y diciembre.
-      </div>
-      <div class="macro-row">
-        <div class="macro-chip"><div class="mk">Calorías Base</div><div class="mv">~2850</div></div>
-        <div class="macro-chip"><div class="mk">Proteína</div><div class="mv">210g</div></div>
-        <div class="macro-chip"><div class="mk">Carbos Recarga</div><div class="mv">310g</div></div>
-        <div class="macro-chip"><div class="mk">Grasas Bajas</div><div class="mv">60g</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- BLOQUE 3: SEMANAS 9 A 14 -->
-  <div class="week" id="sb3">
-    <div class="week-header" onclick="toggleWeek('sb3')">
-      <div class="week-left">
-        <div class="week-num" style="color:#ff914d;">B3</div>
-        <div>
-          <div class="week-title">Bloque 3 (Semanas 9–14) — Peaking Verano Definitivo & Secado</div>
-          <div class="week-sub">Noviembre y Diciembre: Déficit de precisión, carbociclado y look rocoso para el verano.</div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:.75rem;">
-        <div class="week-badges">
-          <span class="badge b-orange">Peaking Final</span>
-          <span class="badge b-green">Carbociclado</span>
-          <span class="badge b-blue">2 HIIT/sem</span>
+          <span class="badge b-orange">Peaking Directo</span>
+          <span class="badge b-green">Sin Deload</span>
+          <span class="badge b-blue">Oct – Dic</span>
         </div>
         <div class="chevron">▾</div>
       </div>
@@ -2136,33 +2100,25 @@ function updateCalculator() {
     const remainingKcal = calories - (prot * 4) - (fats * 9);
     carbsTrain = Math.round(remainingKcal / 4);
     carbsRest = Math.round(carbsTrain * 0.85);
-    calSub = 'Déficit suave de retorno (-250 kcal)';
-    adviceText = '<strong>Pauta Bloque 0 (Sem 1–2):</strong> Retorno al gimnasio. Despierta la memoria muscular a RIR 2–3 sin llegar al fallo. Cumple tu ventana de Ayuno 16/8 y toma 500ml de agua con pizca de sal al despertar.';
+    calSub = 'Déficit suave (Esta semana: 7–13 Sept)';
+    adviceText = '<strong>Pauta Bloque 0 (Esta semana: 7–13 Sept):</strong> Reactivación neural y cargas base. Cierra la puesta a punto con RIR 2–3 sin llegar al fallo. Cumple tu ventana de Ayuno 16/8 y toma 500ml de agua con pizca de sal al despertar.';
   } else if (block === 'ignition') {
     calories = Math.round(tdee - 450);
     fats = Math.round(weight * 0.75);
     const remainingKcal = calories - (prot * 4) - (fats * 9);
     carbsTrain = Math.round(remainingKcal / 4);
     carbsRest = Math.round(carbsTrain * 0.8);
-    calSub = 'Déficit óptimo quema-grasa (-450 kcal)';
-    adviceText = '<strong>Pauta Bloque 1 (Sem 3–7):</strong> Sobrecarga progresiva al máximo. RIR 1–2. La memoria muscular está al 100%: sube kilos a la barra mientras quemas grasa. 10.000 pasos diarios para maximizar la lipólisis.';
-  } else if (block === 'deload') {
-    calories = Math.round(tdee);
-    fats = Math.round(weight * 0.7);
-    const remainingKcal = calories - (prot * 4) - (fats * 9);
-    carbsTrain = Math.round(remainingKcal / 4);
-    carbsRest = Math.round(carbsTrain * 0.9);
-    calSub = 'Descarga neural & Recarga de glucógeno';
-    adviceText = '<strong>Pauta Bloque 2 (Sem 8):</strong> Deload estratégico. Mantén los mismos pesos pero reduce a 2 series por ejercicio. Recarga de carbohidratos limpios para disparar la leptina antes del corte final.';
+    calSub = 'Déficit óptimo (14–30 Septiembre)';
+    adviceText = '<strong>Pauta Bloque 1 (14–30 Sept):</strong> Sobrecarga progresiva al máximo. RIR 1–2. Explota la memoria muscular: sube kilos a la barra mientras quemas grasa. 10.000 pasos diarios para maximizar la lipólisis.';
   } else {
-    // peaking
+    // peaking (October to December - no deload)
     calories = Math.round(tdee - 550);
     fats = Math.round(weight * 0.7);
     const remainingKcal = calories - (prot * 4) - (fats * 9);
     carbsTrain = Math.round(remainingKcal / 4);
     carbsRest = Math.round(carbsTrain * 0.65);
-    calSub = 'Déficit máximo de secado (-550 kcal)';
-    adviceText = '<strong>Pauta Bloque 3 (Sem 9–14):</strong> Peaking pre-verano de alta definición. Carbociclado activo: concentra los carbohidratos en días de piernas y espalda. Vasculariedad y rocosidad máxima.';
+    calSub = 'Déficit de secado (Octubre a Diciembre)';
+    adviceText = '<strong>Pauta Bloque 2 · Peaking (Octubre a Diciembre):</strong> Secado pre-verano continuo sin perder tiempo en deload. Carbociclado activo: altos en piernas y espalda, bajos en descanso. Dureza, vascularidad y definición máxima.';
   }
 
   const elCal = document.getElementById('resCalories');
